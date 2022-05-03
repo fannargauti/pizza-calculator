@@ -18,7 +18,9 @@ const DoughWeight = ({ doughWeight, setDoughWeight }: DoughWeightProps) => {
   return (
     <div>
       <h2>How big should your pizzas be?</h2>
-      <button onClick={() => setDoughWeight(doughWeight - 5, setDoughWeight)}>
+      <button
+        onClick={() => maybeUpdateDoughWeight(doughWeight - 5, setDoughWeight)}
+      >
         -
       </button>
       <input
@@ -27,7 +29,9 @@ const DoughWeight = ({ doughWeight, setDoughWeight }: DoughWeightProps) => {
         min="50"
         value={doughWeight.toString()}
       />
-      <button onClick={() => setDoughWeight(doughWeight + 5, setDoughWeight)}>
+      <button
+        onClick={() => maybeUpdateDoughWeight(doughWeight + 5, setDoughWeight)}
+      >
         +
       </button>
       {error && <p>{error}</p>}
