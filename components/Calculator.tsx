@@ -1,4 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Ingredients } from "../types/common";
+import { calculateIngredients } from "../utils/calculateIngredients";
+import Doughs from "./views/Doughs";
+import DoughWeight from "./views/DoughWeight";
+import HydrationPercentage from "./views/HydrationPercentage";
+import Results from "./views/Results";
+import SaltPercentage from "./views/SaltPercentage";
 
 const viewOrder = [
   "noDoughs",
@@ -8,20 +15,81 @@ const viewOrder = [
   "result",
 ] as const;
 
-const Calculator = () => {
-  const [viewIndex, setViewIndex] = useState(0);
+const initIngredients: Ingredients = {
+  flour: 100,
+  salt: 0,
+  water: 0,
+  yeast: 10,
+  measurement: "grams",
+};
+const initInputs = {
+  numberOfDoughs: 4,
+  doughWeight: 250,
+  saltPercentage: Number((3).toFixed(1)),
+  hydrationPercentage: 60,
+};
 
+const Calculator = () => {
+  const [viewIndex, setViewIndex] = useState(4);
+  const [numberOfDoughs, setNumberOfDoughs] = useState(
+    initInputs.numberOfDoughs
+  );
+  const [doughWeight, setDoughWeight] = useState(initInputs.doughWeight);
+  const [saltPercentage, setSaltPercentage] = useState(
+    initInputs.saltPercentage
+  );
+  const [hydrationPercentage, setHydrationPercentage] = useState(
+    initInputs.hydrationPercentage
+  );
+  const [ingredients, setIngredients] = useState(initIngredients);
+
+  useEffect(() => {
+    if (viewIndex === viewOrder.length - 1) {
+      setIngredients(
+        calculateIngredients({
+          numberOfDoughs,
+          doughWeight,
+          saltPercentage,
+          hydrationPercentage,
+        })
+      );
+    }
+  }, [
+    viewIndex,
+    numberOfDoughs,
+    doughWeight,
+    saltPercentage,
+    hydrationPercentage,
+  ]);
   const viewMap = {
-    noDoughs: <p>doughs</p>,
-    doughWeight: <p>doughWeight</p>,
-    saltPercentage: <p>saltPercentage</p>,
-    hydration: <p>hydration</p>,
-    result: <p>result</p>,
+    noDoughs: (
+      <Doughs
+        numberOfDoughs={numberOfDoughs}
+        setNumberOfDoughs={setNumberOfDoughs}
+      />
+    ),
+    doughWeight: (
+      <DoughWeight doughWeight={doughWeight} setDoughWeight={setDoughWeight} />
+    ),
+    saltPercentage: (
+      <SaltPercentage
+        saltPercentage={saltPercentage}
+        setSaltPercentage={setSaltPercentage}
+      />
+    ),
+    hydration: (
+      <HydrationPercentage
+        hydrationPercentage={hydrationPercentage}
+        setHydrationPercentage={setHydrationPercentage}
+      />
+    ),
+    result: <Results ingredients={ingredients} />,
   };
 
   return (
     <div>
       <div>{viewMap[viewOrder[viewIndex]]}</div>
+      <button onClick={() => setViewIndex(viewIndex - 1)}>prev</button>
       <button onClick={() => setViewIndex(viewIndex + 1)}>next</button>
     </div>
   );
