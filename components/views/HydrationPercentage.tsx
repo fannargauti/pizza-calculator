@@ -1,3 +1,5 @@
+import CounterInput from "./CounterInput";
+
 interface HydrationPercentageProps {
   hydrationPercentage: number;
   setHydrationPercentage: Function;
@@ -21,32 +23,17 @@ const HydrationPercentage = ({
   return (
     <div>
       <h2>Choose hydration percentage</h2>
-      <button
-        onClick={() =>
-          maybeUpdateHydrationPercentage(
-            hydrationPercentage - 1,
-            setHydrationPercentage
-          )
-        }
-      >
-        -
-      </button>
-      <input
-        title="noDoughs"
-        type="number"
-        min="50"
+      <CounterInput
+        title="Hydration percentage"
         value={hydrationPercentage}
-      />
-      <button
-        onClick={() =>
-          maybeUpdateHydrationPercentage(
-            hydrationPercentage + 1,
+        modifier={1}
+        update={(nextHydrationPercentage: number) =>
+          setHydrationPercentage(
+            nextHydrationPercentage,
             setHydrationPercentage
           )
         }
-      >
-        +
-      </button>
+      />
       {error && <p>{error}</p>}
     </div>
   );

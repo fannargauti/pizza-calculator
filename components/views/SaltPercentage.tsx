@@ -1,3 +1,5 @@
+import CounterInput from "./CounterInput";
+
 interface SaltPercentageProps {
   saltPercentage: number;
   setSaltPercentage: Function;
@@ -7,7 +9,6 @@ const maybeUpdateSaltPercentage = (
   nextSaltPercentage: number,
   setSaltPercentage: Function
 ) => {
-  console.log(nextSaltPercentage);
   if (nextSaltPercentage >= 1) {
     setSaltPercentage(Number(nextSaltPercentage.toFixed(1)));
   }
@@ -23,26 +24,14 @@ const SaltPercentage = ({
   return (
     <div>
       <h2>Choose salt percentage</h2>
-      <button
-        onClick={() =>
-          maybeUpdateSaltPercentage(saltPercentage - 0.1, setSaltPercentage)
+      <CounterInput
+        title="Salt percentage"
+        value={saltPercentage}
+        modifier={0.1}
+        update={(nextSaltPercentage: number) =>
+          maybeUpdateSaltPercentage(nextSaltPercentage, setSaltPercentage)
         }
-      >
-        -
-      </button>
-      <input
-        title="noDoughs"
-        type="number"
-        min="50"
-        value={saltPercentage.toFixed(1)}
       />
-      <button
-        onClick={() =>
-          maybeUpdateSaltPercentage(saltPercentage + 0.1, setSaltPercentage)
-        }
-      >
-        +
-      </button>
       {error && <p>{error}</p>}
     </div>
   );

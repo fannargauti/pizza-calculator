@@ -1,4 +1,5 @@
 import { YeastType } from "../../types/common";
+import CounterInput from "./CounterInput";
 
 interface DoughWeightProps {
   proofRoomTempDuration: number;
@@ -53,52 +54,22 @@ const ProofDuration = ({
           </>
         );
       })}
-      <button
-        onClick={() =>
-          maybeUpdateProofTime(
-            proofRoomTempDuration - 1,
-            setProofRoomTempDuration
-          )
+      <CounterInput
+        title="Room temp proof duration"
+        value={proofRoomTempDuration}
+        modifier={1}
+        update={(nextProofDuration: number) =>
+          maybeUpdateProofTime(nextProofDuration, setProofRoomTempDuration)
         }
-      >
-        -
-      </button>
-      <input
-        title="Room temp duration"
-        type="number"
-        min="50"
-        value={`${proofRoomTempDuration.toString()}`}
       />
-      <button
-        onClick={() =>
-          maybeUpdateProofTime(
-            proofRoomTempDuration + 1,
-            setProofRoomTempDuration
-          )
+      <CounterInput
+        title="Fridge proof duration"
+        value={proofFridgeDuration}
+        modifier={1}
+        update={(nextProofDuration: number) =>
+          maybeUpdateProofTime(nextProofDuration, setProofFridgeDuration)
         }
-      >
-        +
-      </button>{" "}
-      <button
-        onClick={() =>
-          maybeUpdateProofTime(proofFridgeDuration - 1, setProofFridgeDuration)
-        }
-      >
-        -
-      </button>
-      <input
-        title="Fridge duration"
-        type="number"
-        min="50"
-        value={`${proofFridgeDuration.toString()}`}
       />
-      <button
-        onClick={() =>
-          maybeUpdateProofTime(proofFridgeDuration + 1, setProofFridgeDuration)
-        }
-      >
-        +
-      </button>
       {error && <p>{error}</p>}
     </div>
   );

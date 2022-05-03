@@ -1,3 +1,5 @@
+import CounterInput from "./CounterInput";
+
 interface DoughWeightProps {
   doughWeight: number;
   setDoughWeight: Function;
@@ -18,22 +20,14 @@ const DoughWeight = ({ doughWeight, setDoughWeight }: DoughWeightProps) => {
   return (
     <div>
       <h2>How big should your pizzas be?</h2>
-      <button
-        onClick={() => maybeUpdateDoughWeight(doughWeight - 5, setDoughWeight)}
-      >
-        -
-      </button>
-      <input
-        title="noDoughs"
-        type="number"
-        min="50"
-        value={doughWeight.toString()}
+      <CounterInput
+        title="Pizza weight"
+        value={doughWeight}
+        modifier={5}
+        update={(nextDoughWeight: number) =>
+          maybeUpdateDoughWeight(nextDoughWeight, setDoughWeight)
+        }
       />
-      <button
-        onClick={() => maybeUpdateDoughWeight(doughWeight + 5, setDoughWeight)}
-      >
-        +
-      </button>
       {error && <p>{error}</p>}
     </div>
   );

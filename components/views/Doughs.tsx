@@ -1,3 +1,5 @@
+import CounterInput from "./CounterInput";
+
 interface DoughsProps {
   numberOfDoughs: number;
   setNumberOfDoughs: Function;
@@ -18,26 +20,14 @@ const Doughs = ({ numberOfDoughs, setNumberOfDoughs }: DoughsProps) => {
   return (
     <div>
       <h2>How many pizzas do you want to make?</h2>
-      <button
-        onClick={() =>
-          maybeUpdateNumberOfDoughs(numberOfDoughs - 1, setNumberOfDoughs)
+      <CounterInput
+        title="Number of doughs"
+        value={numberOfDoughs}
+        modifier={1}
+        update={(nextNumberOfDoughs: number) =>
+          maybeUpdateNumberOfDoughs(nextNumberOfDoughs, setNumberOfDoughs)
         }
-      >
-        -
-      </button>
-      <input
-        title="noDoughs"
-        type="number"
-        min="0"
-        value={numberOfDoughs.toString()}
       />
-      <button
-        onClick={() =>
-          maybeUpdateNumberOfDoughs(numberOfDoughs + 1, setNumberOfDoughs)
-        }
-      >
-        +
-      </button>
       {error && <p>{error}</p>}
     </div>
   );
