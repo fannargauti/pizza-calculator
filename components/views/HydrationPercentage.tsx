@@ -5,15 +5,6 @@ interface HydrationPercentageProps {
   setHydrationPercentage: Function;
 }
 
-const maybeUpdateHydrationPercentage = (
-  nextHydrationPercentage: number,
-  setHydrationPercentage: Function
-) => {
-  if (nextHydrationPercentage >= 1) {
-    setHydrationPercentage(nextHydrationPercentage);
-  }
-};
-
 const HydrationPercentage = ({
   hydrationPercentage,
   setHydrationPercentage,
