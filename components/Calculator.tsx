@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { Ingredients, YeastType } from "../types/common";
 import { calculateIngredients } from "../utils/calculateIngredients";
 import Doughs from "./views/Doughs";
@@ -35,6 +36,13 @@ const initInputs = {
   proofRoomTempDuration: 4,
   proofFridgeDuration: 18,
 };
+
+const SCalculator = styled.div`
+  padding: 48px;
+  height: 500px;
+  width: 300px;
+  background-color: ${(props) => props.theme.offWhite};
+`;
 
 const Calculator = () => {
   const [viewIndex, setViewIndex] = useState(0);
@@ -117,11 +125,12 @@ const Calculator = () => {
   };
 
   return (
-    <div>
+    <SCalculator>
+      <h1>Pizza calculator</h1>
       <div>{viewMap[viewOrder[viewIndex]]}</div>
       <button onClick={() => setViewIndex(viewIndex - 1)}>prev</button>
       <button onClick={() => setViewIndex(viewIndex + 1)}>next</button>
-    </div>
+    </SCalculator>
   );
 };
 

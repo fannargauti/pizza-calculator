@@ -14,7 +14,6 @@ const wobble = keyframes`
 
 const SDoughContainer = styled.div`
   display: flex;
-  width: 400px;
   flex-wrap: wrap;
 `;
 
