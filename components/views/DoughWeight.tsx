@@ -18,7 +18,7 @@ const DoughWeight = ({ doughWeight, setDoughWeight }: DoughWeightProps) => {
   const error = doughWeight < 50 && "Are you making pizzas for ants?";
 
   return (
-    <div>
+    <>
       <h2>How big should your pizzas be?</h2>
       <CounterInput
         title="Pizza weight"
@@ -29,7 +29,7 @@ const DoughWeight = ({ doughWeight, setDoughWeight }: DoughWeightProps) => {
         }
       />
       {error && <p>{error}</p>}
-    </div>
+    </>
   );
 };
 

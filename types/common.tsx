@@ -1,3 +1,5 @@
+import { viewOrder } from "../utils/constants";
+
 export type Ingredients = {
   flour: number;
   salt: number;
@@ -8,3 +10,5 @@ export type Ingredients = {
 };
 
 export type YeastType = "Active dry yeast" | "Fresh yeast" | "Sourdough";
+
+export type ViewType = typeof viewOrder[number];

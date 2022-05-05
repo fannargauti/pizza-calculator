@@ -2,21 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Ingredients, YeastType } from "../types/common";
 import { calculateIngredients } from "../utils/calculateIngredients";
-import Doughs from "./views/Doughs";
-import DoughWeight from "./views/DoughWeight";
-import HydrationPercentage from "./views/HydrationPercentage";
-import ProofDuration from "./views/ProofDuration";
-import Results from "./views/Results";
-import SaltPercentage from "./views/SaltPercentage";
-
-const viewOrder = [
-  "noDoughs",
-  "doughWeight",
-  "saltPercentage",
-  "hydration",
-  "proofDuration",
-  "result",
-] as const;
+import { viewOrder } from "../utils/constants";
+import Views from "./views/Views";
 
 const initIngredients: Ingredients = {
   flour: 100,
@@ -38,10 +25,17 @@ const initInputs = {
 };
 
 const SCalculator = styled.div`
-  padding: 48px;
-  height: 500px;
-  width: 300px;
-  background-color: ${(props) => props.theme.offWhite};
+  padding: 32px;
+  height: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+`;
+
+const SButtonContinue = styled.button`
+  margin-top: auto;
 `;
 
 const Calculator = () => {
@@ -89,47 +83,34 @@ const Calculator = () => {
     proofRoomTempDuration,
     proofFridgeDuration,
   ]);
-  const viewMap = {
-    noDoughs: (
-      <Doughs
+
+  return (
+    <SCalculator>
+      <button onClick={() => setViewIndex(viewIndex - 1)}>{"<"}</button>
+      <h1>Pizza calculator</h1>
+      <Views
         numberOfDoughs={numberOfDoughs}
         setNumberOfDoughs={setNumberOfDoughs}
-      />
-    ),
-    doughWeight: (
-      <DoughWeight doughWeight={doughWeight} setDoughWeight={setDoughWeight} />
-    ),
-    saltPercentage: (
-      <SaltPercentage
+        doughWeight={doughWeight}
+        setDoughWeight={setDoughWeight}
         saltPercentage={saltPercentage}
         setSaltPercentage={setSaltPercentage}
-      />
-    ),
-    hydration: (
-      <HydrationPercentage
         hydrationPercentage={hydrationPercentage}
         setHydrationPercentage={setHydrationPercentage}
-      />
-    ),
-    proofDuration: (
-      <ProofDuration
         selectedYeast={selectedYeast}
         proofRoomTempDuration={proofRoomTempDuration}
         proofFridgeDuration={proofFridgeDuration}
         setSelectedYeastType={setSelectedYeastType}
         setProofRoomTempDuration={setProofRoomTempDuration}
         setProofFridgeDuration={setProofFridgeDuration}
+        viewIndex={viewIndex}
+        viewOrder={viewOrder}
+        ingredients={ingredients}
       />
-    ),
-    result: <Results ingredients={ingredients} />,
-  };
 
-  return (
-    <SCalculator>
-      <h1>Pizza calculator</h1>
-      <div>{viewMap[viewOrder[viewIndex]]}</div>
-      <button onClick={() => setViewIndex(viewIndex - 1)}>prev</button>
-      <button onClick={() => setViewIndex(viewIndex + 1)}>next</button>
+      <SButtonContinue onClick={() => setViewIndex(viewIndex + 1)}>
+        next
+      </SButtonContinue>
     </SCalculator>
   );
 };

@@ -1,4 +1,5 @@
-import React, { SyntheticEvent } from "react";
+import React from "react";
+import styled from "styled-components";
 import CounterButton from "./CounterButton";
 
 interface CounterInputProps {
@@ -7,6 +8,12 @@ interface CounterInputProps {
   modifier: number;
   title: string;
 }
+
+const SCounterInput = styled.div`
+  margin: auto 0 18px;
+  display: flex;
+  justify-content: center;
+`;
 
 const CounterInput = ({
   value,
@@ -22,7 +29,7 @@ const CounterInput = ({
   };
 
   return (
-    <div>
+    <SCounterInput>
       <CounterButton
         handleButtonClick={() => update(value - modifier)}
         symbol="-"
@@ -37,7 +44,7 @@ const CounterInput = ({
         handleButtonClick={() => update(value + modifier)}
         symbol="+"
       />
-    </div>
+    </SCounterInput>
   );
 };
 

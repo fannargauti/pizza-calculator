@@ -7,7 +7,7 @@ interface ResultsProps {
 const Results = ({ ingredients }: ResultsProps) => {
   const { flour, water, salt, yeast, measurement, yeastType } = ingredients;
   return (
-    <div>
+    <>
       <h2>Results</h2>
       <ul>
         <li>{`Flour: ${flour} ${measurement}`}</li>
@@ -15,7 +15,7 @@ const Results = ({ ingredients }: ResultsProps) => {
         <li>{`Salt: ${salt} ${measurement}`}</li>
         <li>{`${yeastType}: ${yeast} ${measurement}`}</li>
       </ul>
-    </div>
+    </>
   );
 };
 

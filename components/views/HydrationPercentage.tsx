@@ -12,7 +12,7 @@ const HydrationPercentage = ({
   const error =
     hydrationPercentage <= 1 && "Your dough is going to by like a clay";
   return (
-    <div>
+    <>
       <h2>Choose hydration percentage</h2>
       <CounterInput
         title="Hydration percentage"
@@ -26,7 +26,7 @@ const HydrationPercentage = ({
         }
       />
       {error && <p>{error}</p>}
-    </div>
+    </>
   );
 };
 

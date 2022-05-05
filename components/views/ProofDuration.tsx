@@ -39,7 +39,7 @@ const ProofDuration = ({
   ];
 
   return (
-    <div>
+    <>
       <h2>For how long to you want to proof your dough?</h2>
       {YEAST_TYPES.map((yeast) => {
         return (
@@ -71,7 +71,7 @@ const ProofDuration = ({
         }
       />
       {error && <p>{error}</p>}
-    </div>
+    </>
   );
 };
 

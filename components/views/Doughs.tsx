@@ -14,6 +14,7 @@ const wobble = keyframes`
 
 const SDoughContainer = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 `;
 
@@ -46,7 +47,7 @@ const Doughs = ({ numberOfDoughs, setNumberOfDoughs }: DoughsProps) => {
   const error = numberOfDoughs === 0 && "Making zero pizzas is no fun";
 
   return (
-    <div>
+    <>
       <h2>How many pizzas do you want to make?</h2>
       <SDoughContainer>
         {Array.from(Array(numberOfDoughs).keys()).map((num) => {
@@ -62,7 +63,7 @@ const Doughs = ({ numberOfDoughs, setNumberOfDoughs }: DoughsProps) => {
         }
       />
       {error && <p>{error}</p>}
-    </div>
+    </>
   );
 };
 

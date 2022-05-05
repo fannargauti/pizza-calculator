@@ -22,7 +22,7 @@ const SaltPercentage = ({
     saltPercentage <= 1 &&
     "Are you sure you want your pizza to taste like paper?";
   return (
-    <div>
+    <>
       <h2>Choose salt percentage</h2>
       <CounterInput
         title="Salt percentage"
@@ -33,7 +33,7 @@ const SaltPercentage = ({
         }
       />
       {error && <p>{error}</p>}
-    </div>
+    </>
   );
 };
 
