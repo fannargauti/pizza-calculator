@@ -1,4 +1,5 @@
 import React, { SyntheticEvent } from "react";
+import CounterButton from "./CounterButton";
 
 interface CounterInputProps {
   value: number;
@@ -16,24 +17,26 @@ const CounterInput = ({
   const maybeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (!isNaN(Number(value))) {
-      update(value);
+      update(Number(value));
     }
   };
 
   return (
     <div>
-      <button type="button" onClick={() => update(value - modifier)}>
-        -
-      </button>
+      <CounterButton
+        handleButtonClick={() => update(value - modifier)}
+        symbol="-"
+      />
       <input
         title={title}
         type="number"
-        value={value}
+        value={Number(value)}
         onChange={maybeUpdate}
       ></input>
-      <button type="button" onClick={() => update(value + modifier)}>
-        +
-      </button>
+      <CounterButton
+        handleButtonClick={() => update(value + modifier)}
+        symbol="+"
+      />
     </div>
   );
 };
