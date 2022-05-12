@@ -2,25 +2,31 @@ import React from "react";
 import styled from "styled-components";
 import CounterButton from "./CounterButton";
 
-interface CounterInputProps {
+interface CounterProps {
   value: number;
   update: Function;
   modifier: number;
   title: string;
 }
 
-const SCounterInput = styled.div`
-  margin: auto 0 18px;
+const SCounter = styled.div`
+  margin: 0 18px;
   display: flex;
   justify-content: center;
 `;
 
-const CounterInput = ({
-  value,
-  update,
-  modifier,
-  title,
-}: CounterInputProps) => {
+const SCounterInput = styled.input`
+  border: none;
+  text-align: center;
+  font-size: 32px;
+  width: 70px;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+  }
+`;
+
+const Counter = ({ value, update, modifier, title }: CounterProps) => {
   const maybeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (!isNaN(Number(value))) {
@@ -29,23 +35,23 @@ const CounterInput = ({
   };
 
   return (
-    <SCounterInput>
+    <SCounter>
       <CounterButton
         handleButtonClick={() => update(value - modifier)}
         symbol="-"
       />
-      <input
+      <SCounterInput
         title={title}
         type="number"
         value={Number(value)}
         onChange={maybeUpdate}
-      ></input>
+      />
       <CounterButton
         handleButtonClick={() => update(value + modifier)}
         symbol="+"
       />
-    </SCounterInput>
+    </SCounter>
   );
 };
 
-export default CounterInput;
+export default Counter;

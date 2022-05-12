@@ -39,7 +39,10 @@ const SButtonContinue = styled.button`
 `;
 
 const Calculator = () => {
+  const [isInitialRender, setIsInitialRenderer] = useState(true);
+
   const [viewIndex, setViewIndex] = useState(0);
+
   const [numberOfDoughs, setNumberOfDoughs] = useState(
     initInputs.numberOfDoughs
   );
@@ -58,6 +61,10 @@ const Calculator = () => {
     initInputs.proofFridgeDuration
   );
   const [ingredients, setIngredients] = useState(initIngredients);
+
+  useEffect(() => {
+    setIsInitialRenderer(false);
+  }, []);
 
   useEffect(() => {
     if (viewIndex === viewOrder.length - 1) {
@@ -87,7 +94,6 @@ const Calculator = () => {
   return (
     <SCalculator>
       <button onClick={() => setViewIndex(viewIndex - 1)}>{"<"}</button>
-      <h1>Pizza calculator</h1>
       <Views
         numberOfDoughs={numberOfDoughs}
         setNumberOfDoughs={setNumberOfDoughs}
@@ -106,6 +112,7 @@ const Calculator = () => {
         viewIndex={viewIndex}
         viewOrder={viewOrder}
         ingredients={ingredients}
+        isInitialRender={isInitialRender}
       />
 
       <SButtonContinue onClick={() => setViewIndex(viewIndex + 1)}>

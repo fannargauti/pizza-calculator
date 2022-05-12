@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Ingredients, ViewType, YeastType } from "../../types/common";
 import Doughs from "./Doughs";
-import DoughWeight from "./DoughWeight";
 import HydrationPercentage from "./HydrationPercentage";
 import ProofDuration from "./ProofDuration";
 import Results from "./Results";
@@ -31,6 +30,7 @@ interface ViewsProps {
   setHydrationPercentage: Function;
   setSelectedYeastType: Function;
   setProofFridgeDuration: Function;
+  isInitialRender: boolean;
 }
 
 const Views = ({
@@ -51,16 +51,18 @@ const Views = ({
   ingredients,
   viewIndex,
   viewOrder,
+  isInitialRender,
 }: ViewsProps) => {
   const viewMap = {
     noDoughs: (
       <Doughs
         numberOfDoughs={numberOfDoughs}
+        doughWeight={doughWeight}
         setNumberOfDoughs={setNumberOfDoughs}
+        setDoughWeight={setDoughWeight}
+        viewType={viewOrder[viewIndex] as ViewType}
+        isInitialRender={isInitialRender}
       />
-    ),
-    doughWeight: (
-      <DoughWeight doughWeight={doughWeight} setDoughWeight={setDoughWeight} />
     ),
     saltPercentage: (
       <SaltPercentage

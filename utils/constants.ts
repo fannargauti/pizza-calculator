@@ -9,7 +9,6 @@ export const ROOM_TEMP_ADJUSTMENT_RATE = 0.003591895305;
 
 export const viewOrder = [
   "noDoughs",
-  "doughWeight",
   "saltPercentage",
   "hydration",
   "proofDuration",

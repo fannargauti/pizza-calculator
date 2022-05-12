@@ -1,4 +1,4 @@
-import CounterInput from "./CounterInput";
+import Counter from "./Counter";
 
 interface HydrationPercentageProps {
   hydrationPercentage: number;
@@ -14,7 +14,7 @@ const HydrationPercentage = ({
   return (
     <>
       <h2>Choose hydration percentage</h2>
-      <CounterInput
+      <Counter
         title="Hydration percentage"
         value={hydrationPercentage}
         modifier={1}

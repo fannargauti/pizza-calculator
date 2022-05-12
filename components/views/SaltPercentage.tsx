@@ -1,4 +1,4 @@
-import CounterInput from "./CounterInput";
+import Counter from "./Counter";
 
 interface SaltPercentageProps {
   saltPercentage: number;
@@ -24,7 +24,7 @@ const SaltPercentage = ({
   return (
     <>
       <h2>Choose salt percentage</h2>
-      <CounterInput
+      <Counter
         title="Salt percentage"
         value={saltPercentage}
         modifier={0.1}

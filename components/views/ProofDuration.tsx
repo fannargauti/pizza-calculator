@@ -1,5 +1,5 @@
 import { YeastType } from "../../types/common";
-import CounterInput from "./CounterInput";
+import Counter from "./Counter";
 
 interface DoughWeightProps {
   proofRoomTempDuration: number;
@@ -54,7 +54,7 @@ const ProofDuration = ({
           </>
         );
       })}
-      <CounterInput
+      <Counter
         title="Room temp proof duration"
         value={proofRoomTempDuration}
         modifier={1}
@@ -62,7 +62,7 @@ const ProofDuration = ({
           maybeUpdateProofTime(nextProofDuration, setProofRoomTempDuration)
         }
       />
-      <CounterInput
+      <Counter
         title="Fridge proof duration"
         value={proofFridgeDuration}
         modifier={1}

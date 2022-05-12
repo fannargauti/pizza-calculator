@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
 import Calculator from "../components/Calculator";
+import OverlayIntro from "../components/views/OverlayIntro";
 
 const SContainer = styled.div`
   background-color: ${(props) => props.theme.offBlack};
@@ -11,6 +12,7 @@ const SContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const SMain = styled.main`
@@ -32,12 +34,15 @@ const Home: NextPage = () => {
         <meta name="description" content="Generate your pizza recipe" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <OverlayIntro>
+        <SMain>
+          <h1>Pizza calculator</h1>
 
-      <SMain>
-        <Calculator />
-      </SMain>
+          <Calculator />
+        </SMain>
 
-      <SFooter>Fannar</SFooter>
+        <SFooter>Fannar</SFooter>
+      </OverlayIntro>
     </SContainer>
   );
 };
