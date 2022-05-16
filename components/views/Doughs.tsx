@@ -46,7 +46,7 @@ const Doughs = ({
         doughWeight={doughWeight}
         isInitialRender={isInitialRender}
       />
-      <h2>How many pizzas do you want to make?</h2>
+      <label>How many pizzas do you want to make?</label>
       <Counter
         title="Number of doughs"
         value={numberOfDoughs}
@@ -55,7 +55,7 @@ const Doughs = ({
           maybeUpdateNumberOfDoughs(nextNumberOfDoughs, setNumberOfDoughs)
         }
       />
-      <h2>How big should your pizzas be?</h2>
+      <label>How big should your pizzas be?</label>
       <Counter
         title="Pizza weight"
         value={doughWeight}

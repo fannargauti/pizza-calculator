@@ -8,7 +8,7 @@ const Results = ({ ingredients }: ResultsProps) => {
   const { flour, water, salt, yeast, measurement, yeastType } = ingredients;
   return (
     <>
-      <h2>Results</h2>
+      <label>Results</label>
       <ul>
         <li>{`Flour: ${flour} ${measurement}`}</li>
         <li>{`Water: ${water} ${measurement}`}</li>

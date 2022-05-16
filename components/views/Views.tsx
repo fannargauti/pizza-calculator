@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Ingredients, ViewType, YeastType } from "../../types/common";
 import Doughs from "./Doughs";
-import HydrationPercentage from "./HydrationPercentage";
+import Percentages from "./Percentages";
 import ProofDuration from "./ProofDuration";
 import Results from "./Results";
-import SaltPercentage from "./SaltPercentage";
+import YeastTypes from "./YeastTypes";
 
 const SView = styled.div`
   height: 100%;
@@ -64,24 +64,25 @@ const Views = ({
         isInitialRender={isInitialRender}
       />
     ),
-    saltPercentage: (
-      <SaltPercentage
+    percentages: (
+      <Percentages
         saltPercentage={saltPercentage}
         setSaltPercentage={setSaltPercentage}
-      />
-    ),
-    hydration: (
-      <HydrationPercentage
         hydrationPercentage={hydrationPercentage}
         setHydrationPercentage={setHydrationPercentage}
       />
     ),
+
+    yeastTypes: (
+      <YeastTypes
+        selectedYeast={selectedYeast}
+        setSelectedYeastType={setSelectedYeastType}
+      />
+    ),
     proofDuration: (
       <ProofDuration
-        selectedYeast={selectedYeast}
         proofRoomTempDuration={proofRoomTempDuration}
         proofFridgeDuration={proofFridgeDuration}
-        setSelectedYeastType={setSelectedYeastType}
         setProofRoomTempDuration={setProofRoomTempDuration}
         setProofFridgeDuration={setProofFridgeDuration}
       />
