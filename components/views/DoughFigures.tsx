@@ -8,12 +8,12 @@ interface IDoughFigures {
   isInitialRender: boolean;
 }
 
-const SDoughContainer = styled.div<{ isInitialRender: boolean }>`
+const SDoughContainer = styled.div`
+  margin: auto -24px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 500px;
-  max-height: 394px;
 `;
 
 export type AnimationVariant = "noDoughs" | "doughWeight";
@@ -35,7 +35,7 @@ const DoughFigures = ({
   }, [numberOfDoughs]);
 
   return (
-    <SDoughContainer isInitialRender={isInitialRender}>
+    <SDoughContainer>
       {Array.from(Array(numberOfDoughs < 20 ? numberOfDoughs : 20).keys()).map(
         (num) => {
           const shouldAnimate =

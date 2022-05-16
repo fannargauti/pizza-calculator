@@ -28,7 +28,7 @@ const SDoughFigure = styled(motion.span)<IStyledDoughFigure>`
 `;
 
 function getDoughSize(doughWeight: number): number {
-  const defaultSize = 75;
+  const defaultSize = 85;
   const defaultWeight = 250;
   const increasePercent = doughWeight / defaultWeight;
   const size = defaultSize * increasePercent;
