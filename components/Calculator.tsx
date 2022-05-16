@@ -1,9 +1,12 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { Ingredients, YeastType } from "../types/common";
 import { calculateIngredients } from "../utils/calculateIngredients";
 import { viewOrder } from "../utils/constants";
+import Button from "./views/Button";
 import Views from "./views/Views";
+import ChevronIcon from "./views/Icons/ChevronIcon";
 
 const initIngredients: Ingredients = {
   flour: 100,
@@ -26,22 +29,36 @@ const initInputs = {
 
 const SCalculator = styled.div`
   padding: 32px;
-  height: 700px;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0px 8px 16px -8px rgba(0, 0, 0, 0.3),
+    0px -6px 16px -6px rgba(0, 0, 0, 0.025);
 `;
 
-const SButtonContinue = styled.button`
-  margin-top: auto;
+const SBackButton = styled.button`
+  align-self: flex-start;
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  fill: ${(props) => props.theme.blue};
+`;
+
+const SButtonNextWrapper = styled.div`
+  margin-top: 18px;
 `;
 
 const Calculator = () => {
   const [isInitialRender, setIsInitialRenderer] = useState(true);
 
-  const [viewIndex, setViewIndex] = useState(0);
+  const [viewIndex, setViewIndex] = useState(3);
 
   const [numberOfDoughs, setNumberOfDoughs] = useState(
     initInputs.numberOfDoughs
@@ -93,7 +110,11 @@ const Calculator = () => {
 
   return (
     <SCalculator>
-      <button onClick={() => setViewIndex(viewIndex - 1)}>{"<"}</button>
+      {viewIndex > 0 && (
+        <SBackButton onClick={() => setViewIndex(viewIndex - 1)}>
+          <ChevronIcon />
+        </SBackButton>
+      )}
       <Views
         numberOfDoughs={numberOfDoughs}
         setNumberOfDoughs={setNumberOfDoughs}
@@ -114,10 +135,9 @@ const Calculator = () => {
         ingredients={ingredients}
         isInitialRender={isInitialRender}
       />
-
-      <SButtonContinue onClick={() => setViewIndex(viewIndex + 1)}>
-        next
-      </SButtonContinue>
+      <SButtonNextWrapper>
+        <Button onClick={() => setViewIndex(viewIndex + 1)}>next</Button>
+      </SButtonNextWrapper>
     </SCalculator>
   );
 };

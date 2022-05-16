@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CounterButton from "./CounterButton";
+import Button from "./Button";
 
 interface CounterProps {
   value: number;
@@ -10,7 +10,7 @@ interface CounterProps {
 }
 
 const SCounter = styled.div`
-  margin: 0 18px;
+  margin: 18px;
   display: flex;
   justify-content: center;
 `;
@@ -26,6 +26,19 @@ const SCounterInput = styled.input`
   }
 `;
 
+const SButtonContainer = styled.div`
+  button {
+    border-radius: 8%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 32px;
+  }
+`;
+
 const Counter = ({ value, update, modifier, title }: CounterProps) => {
   const maybeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -36,20 +49,18 @@ const Counter = ({ value, update, modifier, title }: CounterProps) => {
 
   return (
     <SCounter>
-      <CounterButton
-        handleButtonClick={() => update(value - modifier)}
-        symbol="-"
-      />
+      <SButtonContainer>
+        <Button onClick={() => update(value - modifier)}>−</Button>
+      </SButtonContainer>
       <SCounterInput
         title={title}
         type="number"
         value={Number(value)}
         onChange={maybeUpdate}
       />
-      <CounterButton
-        handleButtonClick={() => update(value + modifier)}
-        symbol="+"
-      />
+      <SButtonContainer>
+        <Button onClick={() => update(value + modifier)}>+</Button>
+      </SButtonContainer>
     </SCounter>
   );
 };
