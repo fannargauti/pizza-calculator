@@ -5,7 +5,9 @@ import Calculator from "../components/Calculator";
 import OverlayIntro from "../components/views/OverlayIntro";
 
 const SContainer = styled.div`
-  background-color: ${(props) => props.theme.offBlack};
+  background: url("/pizza.png") repeat;
+  background-size: 60px;
+
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -36,8 +38,6 @@ const Home: NextPage = () => {
       </Head>
       <OverlayIntro>
         <SMain>
-          <h1>Pizza calculator</h1>
-
           <Calculator />
         </SMain>
 

@@ -6,7 +6,7 @@ const theme = {
   red: "#E63946",
   offWhite: "#F1FAEE",
   turquise: "#A8DADC",
-  blue: "#457B9D",
+  blue: "#5061ff",
   offBlack: "#1D3557",
 };
 
