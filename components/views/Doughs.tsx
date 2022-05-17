@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { ViewType } from "../../types/common";
 import Counter from "./Counter";
 import DoughFigures from "./DoughFigures";
+import Label from "./Label";
 
 interface DoughsProps {
   numberOfDoughs: number;
@@ -11,6 +12,10 @@ interface DoughsProps {
   viewType: ViewType;
   isInitialRender: boolean;
 }
+
+const SContent = styled.div`
+  margin-top: auto;
+`;
 
 const maybeUpdateNumberOfDoughs = (
   nextNumberOfDoughs: number,
@@ -46,24 +51,29 @@ const Doughs = ({
         doughWeight={doughWeight}
         isInitialRender={isInitialRender}
       />
-      <label>How many pizzas do you want to make?</label>
-      <Counter
-        title="Number of doughs"
-        value={numberOfDoughs}
-        modifier={1}
-        update={(nextNumberOfDoughs: number) =>
-          maybeUpdateNumberOfDoughs(nextNumberOfDoughs, setNumberOfDoughs)
-        }
-      />
-      <label>How big should your pizzas be?</label>
-      <Counter
-        title="Pizza weight"
-        value={doughWeight}
-        modifier={5}
-        update={(nextDoughWeight: number) =>
-          maybeUpdateDoughWeight(nextDoughWeight, setDoughWeight)
-        }
-      />
+      <SContent>
+        <Label htmlFor="Number of doughs">
+          How many pizzas do you want to make?
+        </Label>
+        <Counter
+          title="Number of doughs"
+          value={numberOfDoughs}
+          modifier={1}
+          update={(nextNumberOfDoughs: number) =>
+            maybeUpdateNumberOfDoughs(nextNumberOfDoughs, setNumberOfDoughs)
+          }
+        />
+        <Label htmlFor="Pizza weight">How big should your pizzas be?</Label>
+        <Counter
+          title="Pizza weight"
+          value={doughWeight}
+          modifier={5}
+          measurement="gr"
+          update={(nextDoughWeight: number) =>
+            maybeUpdateDoughWeight(nextDoughWeight, setDoughWeight)
+          }
+        />
+      </SContent>
       {error && <p>{error}</p>}
     </>
   );

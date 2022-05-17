@@ -18,7 +18,7 @@ const initIngredients: Ingredients = {
 };
 
 const initInputs = {
-  numberOfDoughs: 4,
+  numberOfDoughs: 5,
   doughWeight: 250,
   saltPercentage: Number((3).toFixed(1)),
   hydrationPercentage: 60,
@@ -29,7 +29,7 @@ const initInputs = {
 
 const SCalculator = styled.div`
   padding: 32px;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ const SButtonNextWrapper = styled.div`
 const Calculator = () => {
   const [isInitialRender, setIsInitialRenderer] = useState(true);
 
-  const [viewIndex, setViewIndex] = useState(3);
+  const [viewIndex, setViewIndex] = useState(0);
 
   const [numberOfDoughs, setNumberOfDoughs] = useState(
     initInputs.numberOfDoughs

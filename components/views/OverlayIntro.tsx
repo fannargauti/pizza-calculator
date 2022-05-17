@@ -29,7 +29,7 @@ const SButton = styled.button`
 `;
 
 const OverlayIntro = ({ children }: { children: React.ReactElement[] }) => {
-  const [started, setStarted] = useState(false);
+  const [started, setStarted] = useState(true);
   return started ? (
     children
   ) : (

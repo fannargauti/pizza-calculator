@@ -10,6 +10,9 @@ const SView = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 `;
 
 interface ViewsProps {
