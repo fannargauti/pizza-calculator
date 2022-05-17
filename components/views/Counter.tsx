@@ -7,6 +7,7 @@ interface CounterProps {
   update: Function;
   modifier: number;
   title: string;
+  measurement?: string;
 }
 
 const SCounter = styled.div`
@@ -19,7 +20,7 @@ const SCounterInput = styled.input`
   border: none;
   text-align: center;
   font-size: 32px;
-  width: 70px;
+  width: 126px;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     appearance: none;
@@ -39,7 +40,13 @@ const SButtonContainer = styled.div`
   }
 `;
 
-const Counter = ({ value, update, modifier, title }: CounterProps) => {
+const Counter = ({
+  value,
+  update,
+  modifier,
+  title,
+  measurement = "",
+}: CounterProps) => {
   const maybeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (!isNaN(Number(value))) {
@@ -54,9 +61,9 @@ const Counter = ({ value, update, modifier, title }: CounterProps) => {
       </SButtonContainer>
       <SCounterInput
         title={title}
-        type="number"
-        value={Number(value)}
-        onChange={maybeUpdate}
+        type="text"
+        value={`${Number(value)}${measurement}`}
+        readOnly
       />
       <SButtonContainer>
         <Button onClick={() => update(value + modifier)}>+</Button>
