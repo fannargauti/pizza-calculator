@@ -6,7 +6,8 @@ interface ILabel {
 }
 
 const SLabel = styled.label`
-  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
 `;
 
 const Label = ({ children, htmlFor }: ILabel) => {

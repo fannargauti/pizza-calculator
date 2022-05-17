@@ -1,19 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import Label from "./Label";
 
 interface CounterProps {
   value: number;
   update: Function;
   modifier: number;
   title: string;
+  label: string;
   measurement?: string;
 }
 
 const SCounter = styled.div`
-  margin: 18px;
+  margin: 18px 0;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
 `;
 
 const SCounterInput = styled.input`
@@ -40,11 +46,16 @@ const SButtonContainer = styled.div`
   }
 `;
 
+const SCounterToggles = styled.div`
+  display: flex;
+`;
+
 const Counter = ({
   value,
   update,
   modifier,
   title,
+  label,
   measurement = "",
 }: CounterProps) => {
   const maybeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,18 +67,21 @@ const Counter = ({
 
   return (
     <SCounter>
-      <SButtonContainer>
-        <Button onClick={() => update(value - modifier)}>−</Button>
-      </SButtonContainer>
-      <SCounterInput
-        title={title}
-        type="text"
-        value={`${Number(value)}${measurement}`}
-        readOnly
-      />
-      <SButtonContainer>
-        <Button onClick={() => update(value + modifier)}>+</Button>
-      </SButtonContainer>
+      <Label htmlFor={title}>{label}</Label>
+      <SCounterToggles>
+        <SButtonContainer>
+          <Button onClick={() => update(value - modifier)}>−</Button>
+        </SButtonContainer>
+        <SCounterInput
+          title={title}
+          type="text"
+          value={`${Number(value)}${measurement}`}
+          readOnly
+        />
+        <SButtonContainer>
+          <Button onClick={() => update(value + modifier)}>+</Button>
+        </SButtonContainer>
+      </SCounterToggles>
     </SCounter>
   );
 };

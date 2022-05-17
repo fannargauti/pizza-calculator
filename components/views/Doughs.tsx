@@ -52,10 +52,8 @@ const Doughs = ({
         isInitialRender={isInitialRender}
       />
       <SContent>
-        <Label htmlFor="Number of doughs">
-          How many pizzas do you want to make?
-        </Label>
         <Counter
+          label="Number of pizzas"
           title="Number of doughs"
           value={numberOfDoughs}
           modifier={1}
@@ -63,8 +61,8 @@ const Doughs = ({
             maybeUpdateNumberOfDoughs(nextNumberOfDoughs, setNumberOfDoughs)
           }
         />
-        <Label htmlFor="Pizza weight">How big should your pizzas be?</Label>
         <Counter
+          label="Doughball weight"
           title="Pizza weight"
           value={doughWeight}
           modifier={5}

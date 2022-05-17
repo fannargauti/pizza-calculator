@@ -1,5 +1,4 @@
 import Counter from "./Counter";
-import Label from "./Label";
 
 interface DoughWeightProps {
   proofRoomTempDuration: number;
@@ -30,8 +29,8 @@ const ProofDuration = ({
 
   return (
     <>
-      <Label htmlFor="Room temp proof duration">Room temp proof duration</Label>
       <Counter
+        label="Room temp proof duration"
         title="Room temp proof duration"
         value={proofRoomTempDuration}
         modifier={1}
@@ -40,8 +39,8 @@ const ProofDuration = ({
           maybeUpdateProofTime(nextProofDuration, setProofRoomTempDuration)
         }
       />
-      <Label htmlFor="Fridge proof duration">Fridge proof duration</Label>
       <Counter
+        label="Fridge proof duration"
         title="Fridge proof duration"
         value={proofFridgeDuration}
         modifier={1}
