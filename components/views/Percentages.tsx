@@ -1,4 +1,5 @@
 import Counter from "./Counter";
+import Label from "./Label";
 
 interface IPercantages {
   hydrationPercentage: number;
@@ -24,20 +25,22 @@ const Percentages = ({
 }: IPercantages) => {
   return (
     <>
-      <label>Choose salt percentage</label>
+      <Label htmlFor="Salt percentage">Choose salt percentage</Label>
       <Counter
         title="Salt percentage"
         value={saltPercentage}
         modifier={0.1}
+        measurement="%"
         update={(nextSaltPercentage: number) =>
           maybeUpdateSaltPercentage(nextSaltPercentage, setSaltPercentage)
         }
       />
-      <label>Choose hydration percentage</label>
+      <Label htmlFor="Hydration percentage">Choose hydration percentage</Label>
       <Counter
         title="Hydration percentage"
         value={hydrationPercentage}
         modifier={1}
+        measurement="%"
         update={(nextHydrationPercentage: number) =>
           setHydrationPercentage(
             nextHydrationPercentage,

@@ -35,7 +35,7 @@ const YeastTypes = ({ selectedYeast, setSelectedYeastType }: TYeastTypes) => {
   ];
   return (
     <>
-      <label>Select your yeast type</label>
+      <h2>Select your yeast type</h2>
       <SYeastButtonsContainer>
         {YEAST_TYPES.map((yeast) => {
           return (
