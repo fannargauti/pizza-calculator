@@ -26,7 +26,7 @@ const initInputs = {
 
 const SCalculator = styled.div`
   padding: 32px;
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@ const SButtonNextWrapper = styled.div`
 const Calculator = () => {
   const [isInitialRender, setIsInitialRenderer] = useState(true);
 
-  const [viewIndex, setViewIndex] = useState(4);
+  const [viewIndex, setViewIndex] = useState(0);
 
   const [navigationDirection, setNavigationDirection] = useState<
     "forward" | "backward"

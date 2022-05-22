@@ -1,4 +1,5 @@
 import Counter from "./Counter";
+import Header from "./Header";
 
 interface IPercantages {
   hydrationPercentage: number;
@@ -24,6 +25,7 @@ const Percentages = ({
 }: IPercantages) => {
   return (
     <>
+      <Header>Percentages</Header>
       <Counter
         label="Salt percentage"
         title="Salt percentage"

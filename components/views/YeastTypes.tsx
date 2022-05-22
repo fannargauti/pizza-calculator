@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { YeastType } from "../../types/common";
+import Header from "./Header";
 
 interface TYeastTypes {
   selectedYeast: YeastType;
@@ -35,7 +36,7 @@ const YeastTypes = ({ selectedYeast, setSelectedYeastType }: TYeastTypes) => {
   ];
   return (
     <>
-      <h2>Select your yeast type</h2>
+      <Header>Yeast type</Header>
       <SYeastButtonsContainer>
         {YEAST_TYPES.map((yeast) => {
           return (

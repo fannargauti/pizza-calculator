@@ -9,7 +9,11 @@ import Results from "./Results";
 import YeastTypes from "./YeastTypes";
 
 const SView = styled.div`
-  height: "100%";
+  height: 100%;
+`;
+
+const SViewContainer = styled(motion.div)`
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +65,7 @@ const Views = ({
   navigationDirection,
 }: ViewsProps) => {
   useEffect;
-  const viewAnimations = {
+  const viewAnimations = !isInitialRender && {
     initial: {
       x: navigationDirection === "forward" ? "100%" : "-100%",
       opacity: 0,
@@ -76,7 +80,7 @@ const Views = ({
 
   const viewMap = {
     noDoughs: (
-      <motion.div key={"noDoughs"} {...viewAnimations}>
+      <SViewContainer key={"noDoughs"} {...viewAnimations}>
         <Doughs
           numberOfDoughs={numberOfDoughs}
           doughWeight={doughWeight}
@@ -85,40 +89,49 @@ const Views = ({
           viewType={viewOrder[viewIndex] as ViewType}
           isInitialRender={isInitialRender}
         />
-      </motion.div>
+      </SViewContainer>
     ),
     percentages: (
-      <motion.div key={"percentages"} {...viewAnimations}>
+      <SViewContainer key={"percentages"} {...viewAnimations}>
         <Percentages
           saltPercentage={saltPercentage}
           setSaltPercentage={setSaltPercentage}
           hydrationPercentage={hydrationPercentage}
           setHydrationPercentage={setHydrationPercentage}
         />
-      </motion.div>
+      </SViewContainer>
     ),
 
     yeastTypes: (
-      <motion.div key={"yeastTypes"} {...viewAnimations}>
+      <SViewContainer key={"yeastTypes"} {...viewAnimations}>
         <YeastTypes
           selectedYeast={selectedYeast}
           setSelectedYeastType={setSelectedYeastType}
         />
-      </motion.div>
+      </SViewContainer>
     ),
     proofDuration: (
-      <motion.div key={"proofDuration"} {...viewAnimations}>
+      <SViewContainer key={"proofDuration"} {...viewAnimations}>
         <ProofDuration
           proofRoomTempDuration={proofRoomTempDuration}
           proofFridgeDuration={proofFridgeDuration}
           setProofRoomTempDuration={setProofRoomTempDuration}
           setProofFridgeDuration={setProofFridgeDuration}
         />
-      </motion.div>
+      </SViewContainer>
     ),
     result: (
-      <motion.div key={"result"} {...viewAnimations}>
-        <Results ingredients={ingredients} />,
+      <motion.div
+        key={"result"}
+        initial={{
+          opacity: 0,
+        }}
+        animate={{ opacity: 1 }}
+        exit={{
+          opacity: 0,
+        }}
+      >
+        <Results ingredients={ingredients} />
       </motion.div>
     ),
   };

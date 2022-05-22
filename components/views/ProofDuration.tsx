@@ -1,4 +1,5 @@
 import Counter from "./Counter";
+import Header from "./Header";
 
 interface DoughWeightProps {
   proofRoomTempDuration: number;
@@ -29,6 +30,7 @@ const ProofDuration = ({
 
   return (
     <>
+      <Header>Proofing duration</Header>
       <Counter
         label="Room temp proof duration"
         title="Room temp proof duration"
