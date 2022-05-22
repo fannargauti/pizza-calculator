@@ -40,10 +40,12 @@ export function calculateIngredients(
     calculateYeastPercentage(proofRoomTempDuration, proofFridgeDuration);
 
   return {
-    flour: flour,
-    salt: salt,
-    water: water,
-    yeast: convertToYeastType(yeast, selectedYeast),
+    amounts: {
+      flour: flour,
+      salt: salt,
+      water: water,
+      yeast: convertToYeastType(yeast, selectedYeast),
+    },
     yeastType: selectedYeast,
     measurement: "grams",
   };

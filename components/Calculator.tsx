@@ -9,10 +9,7 @@ import Views from "./views/Views";
 import ChevronIcon from "./views/Icons/ChevronIcon";
 
 const initIngredients: Ingredients = {
-  flour: 100,
-  salt: 0,
-  water: 0,
-  yeast: 10,
+  amounts: { flour: 0, salt: 0, water: 0, yeast: 0 },
   yeastType: "Active dry yeast",
   measurement: "grams",
 };
@@ -58,7 +55,7 @@ const SButtonNextWrapper = styled.div`
 const Calculator = () => {
   const [isInitialRender, setIsInitialRenderer] = useState(true);
 
-  const [viewIndex, setViewIndex] = useState(0);
+  const [viewIndex, setViewIndex] = useState(4);
 
   const [numberOfDoughs, setNumberOfDoughs] = useState(
     initInputs.numberOfDoughs
