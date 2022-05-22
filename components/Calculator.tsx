@@ -56,7 +56,7 @@ const SButtonNextWrapper = styled.div`
 const Calculator = () => {
   const [isInitialRender, setIsInitialRenderer] = useState(true);
 
-  const [viewIndex, setViewIndex] = useState(1);
+  const [viewIndex, setViewIndex] = useState(0);
 
   const [navigationDirection, setNavigationDirection] = useState<
     "forward" | "backward"
