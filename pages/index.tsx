@@ -1,5 +1,7 @@
+import { AnimatePresence } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import styled from "styled-components";
 import Calculator from "../components/Calculator";
 import OverlayIntro from "../components/views/OverlayIntro";
@@ -21,14 +23,9 @@ const SMain = styled.main`
   margin: auto;
 `;
 
-const SFooter = styled.footer`
-  justify-self: flex-end;
-  width: 100%;
-  height: 100px;
-  background-color: ${(props) => props.theme.offWhite};
-`;
-
 const Home: NextPage = () => {
+  const [started, setStarted] = useState(false);
+
   return (
     <SContainer>
       <Head>
@@ -36,13 +33,15 @@ const Home: NextPage = () => {
         <meta name="description" content="Generate your pizza recipe" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <OverlayIntro>
-        <SMain>
-          <Calculator />
-        </SMain>
-
-        <SFooter>Fannar</SFooter>
-      </OverlayIntro>
+      <AnimatePresence exitBeforeEnter>
+        {started ? (
+          <SMain key="main">
+            <Calculator />
+          </SMain>
+        ) : (
+          <OverlayIntro key="overlay" setStarted={() => setStarted(true)} />
+        )}
+      </AnimatePresence>
     </SContainer>
   );
 };

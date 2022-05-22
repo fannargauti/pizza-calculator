@@ -54,8 +54,8 @@ const DoughFigure = ({
     intro: {
       scale: [50, 0.95, 1.05, 0.99, 1.02, 1, 0.99, 1.01],
       transition: {
-        duration: 2,
-        delay: Math.random() * (0.7 - 0.5) + 0.5,
+        duration: 3,
+        delay: Math.random() * (0.4 - 0.2) + 0.2,
         times: [0, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.98],
       },
     },
