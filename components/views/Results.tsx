@@ -4,9 +4,14 @@ import styled from "styled-components";
 import { IngredientAmounts, Ingredients } from "../../types/common";
 import YeastTypes from "./YeastTypes";
 import Header from "./Header";
+import SampleRecipe from "./SampleRecipe";
 
 interface ResultsProps {
   ingredients: Ingredients;
+  proofRoomTempDuration: number;
+  proofFridgeDuration: number;
+  numberOfDoughs: number;
+  doughWeight: number;
 }
 
 const SResults = styled.div``;
@@ -48,7 +53,13 @@ const SIngredientAmount = styled.p`
   margin-top: 8px;
 `;
 
-const Results = ({ ingredients }: ResultsProps) => {
+const Results = ({
+  ingredients,
+  proofRoomTempDuration,
+  proofFridgeDuration,
+  numberOfDoughs,
+  doughWeight,
+}: ResultsProps) => {
   const { amounts, measurement, yeastType } = ingredients;
   const { flour, water, salt, yeast } = amounts;
   return (
@@ -92,7 +103,7 @@ const Results = ({ ingredients }: ResultsProps) => {
           <SIngredientAmount>
             <CountUp
               end={salt}
-              decimals={2}
+              decimals={1}
               suffix={` ${measurement}`}
               duration={2}
             />
@@ -108,13 +119,20 @@ const Results = ({ ingredients }: ResultsProps) => {
           <SIngredientAmount>
             <CountUp
               end={yeast}
-              decimals={2}
+              decimals={1}
               suffix={` ${measurement}`}
               duration={2}
             />
           </SIngredientAmount>
         </SIngredient>
       </SIngredientsList>
+      <SampleRecipe
+        ingredients={ingredients}
+        proofRoomTempDuration={proofRoomTempDuration}
+        proofFridgeDuration={proofFridgeDuration}
+        numberOfDoughs={numberOfDoughs}
+        doughWeight={doughWeight}
+      />
     </SResults>
   );
 };

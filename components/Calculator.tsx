@@ -143,16 +143,18 @@ const Calculator = () => {
         isInitialRender={isInitialRender}
         navigationDirection={navigationDirection}
       />
-      <SButtonNextWrapper>
-        <Button
-          onClick={() => {
-            setNavigationDirection("forward");
-            setViewIndex(viewIndex + 1);
-          }}
-        >
-          next
-        </Button>
-      </SButtonNextWrapper>
+      {viewIndex < viewOrder.length - 1 && (
+        <SButtonNextWrapper>
+          <Button
+            onClick={() => {
+              setNavigationDirection("forward");
+              setViewIndex(viewIndex + 1);
+            }}
+          >
+            next
+          </Button>
+        </SButtonNextWrapper>
+      )}
     </SCalculator>
   );
 };

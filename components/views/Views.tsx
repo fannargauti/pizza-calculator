@@ -131,7 +131,13 @@ const Views = ({
           opacity: 0,
         }}
       >
-        <Results ingredients={ingredients} />
+        <Results
+          ingredients={ingredients}
+          proofRoomTempDuration={proofRoomTempDuration}
+          proofFridgeDuration={proofFridgeDuration}
+          numberOfDoughs={numberOfDoughs}
+          doughWeight={doughWeight}
+        />
       </motion.div>
     ),
   };

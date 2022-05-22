@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { ViewType } from "../../types/common";
 import Counter from "./Counter";
 import DoughFigures from "./DoughFigures";
-import Label from "./Label";
 
 interface DoughsProps {
   numberOfDoughs: number;
