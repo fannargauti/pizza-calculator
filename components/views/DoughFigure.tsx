@@ -14,6 +14,7 @@ interface IStyledDoughFigure {
 }
 
 const SDoughFigure = styled(motion.span)<IStyledDoughFigure>`
+  margin: -3px 0px;
   height: ${(props) => `${getDoughSize(props.doughWeight)}px`};
   width: ${(props) => `${getDoughSize(props.doughWeight)}px`};
   border-radius: 40%;
@@ -23,16 +24,18 @@ const SDoughFigure = styled(motion.span)<IStyledDoughFigure>`
     rgba(255, 243, 195, 1) 56%,
     rgba(255, 242, 178, 1) 100%
   );
-  border-color: tomato;
-  border-width: 5px;
+  outline: 2px solid #ffe993;
 `;
 
 function getDoughSize(doughWeight: number): number {
   const defaultSize = 100;
   const defaultWeight = 250;
   const increasePercent = doughWeight / defaultWeight;
-  const size = defaultSize * increasePercent;
-  return size + increasePercent;
+  const size = (defaultSize * increasePercent * 2) / 2;
+  if (size > 130) {
+    return 130;
+  }
+  return size;
 }
 
 const DoughFigure = ({

@@ -24,7 +24,6 @@ const SYeastButton = styled.button<IStyledYeastButton>`
 const SYeastButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto;
   width: 100%;
 `;
 

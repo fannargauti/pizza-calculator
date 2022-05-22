@@ -35,7 +35,7 @@ const DoughFigures = ({
 
   return (
     <SDoughContainer>
-      {Array.from(Array(numberOfDoughs < 20 ? numberOfDoughs : 20).keys()).map(
+      {Array.from(Array(numberOfDoughs < 15 ? numberOfDoughs : 15).keys()).map(
         (num) => {
           const shouldAnimate =
             ((num > 4 && num === numberOfDoughs - 1) ||

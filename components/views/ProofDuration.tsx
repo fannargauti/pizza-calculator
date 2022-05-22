@@ -32,8 +32,8 @@ const ProofDuration = ({
     <>
       <Header>Proofing duration</Header>
       <Counter
-        label="Room temp proof duration"
-        title="Room temp proof duration"
+        label="Room temp proofing"
+        title="Room temp proofing"
         value={proofRoomTempDuration}
         modifier={1}
         measurement="h"
@@ -42,8 +42,8 @@ const ProofDuration = ({
         }
       />
       <Counter
-        label="Fridge proof duration"
-        title="Fridge proof duration"
+        label="Fridge proofing"
+        title="Fridge proofing"
         value={proofFridgeDuration}
         modifier={1}
         measurement="h"

@@ -29,6 +29,7 @@ const Percentages = ({
       <Counter
         label="Salt percentage"
         title="Salt percentage"
+        tooltip="Salt percentage of total dough weight"
         value={saltPercentage}
         modifier={0.1}
         measurement="%"
@@ -39,6 +40,7 @@ const Percentages = ({
       <Counter
         label="Dough hydration"
         title="Hydration percentage"
+        tooltip="Water to flour ratio. The higher the hydration, the harder it is to work with the dough"
         value={hydrationPercentage}
         modifier={1}
         measurement="%"

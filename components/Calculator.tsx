@@ -36,6 +36,7 @@ const SCalculator = styled.div`
   box-shadow: 0px 13px 27px -5px rgba(50, 50, 93, 0.25),
     0px 8px 16px -8px rgba(0, 0, 0, 0.3),
     0px -6px 16px -6px rgba(0, 0, 0, 0.025);
+  overflow: scroll;
 `;
 
 const SBackButton = styled.button`
@@ -55,7 +56,7 @@ const SButtonNextWrapper = styled.div`
 const Calculator = () => {
   const [isInitialRender, setIsInitialRenderer] = useState(true);
 
-  const [viewIndex, setViewIndex] = useState(0);
+  const [viewIndex, setViewIndex] = useState(1);
 
   const [navigationDirection, setNavigationDirection] = useState<
     "forward" | "backward"

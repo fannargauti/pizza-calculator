@@ -6,6 +6,8 @@ interface ILabel {
 }
 
 const SLabel = styled.label`
+  display: flex;
+  align-items: center;
   text-align: center;
   font-size: 18px;
 `;

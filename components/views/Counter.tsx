@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
+import styled, { useTheme } from "styled-components";
 import Button from "./Button";
 import Label from "./Label";
 
@@ -9,6 +10,7 @@ interface CounterProps {
   modifier: number;
   title: string;
   label: string;
+  tooltip?: string;
   measurement?: string;
 }
 
@@ -20,6 +22,19 @@ const SCounter = styled.div`
   gap: 12px;
   width: 100%;
   align-items: center;
+`;
+
+const STooltipIndicator = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  margin-left: 4px;
+  border: 1px solid ${(props) => props.theme.blue};
+  border-radius: 50%;
+  color: ${(props) => props.theme.blue};
+  text-align: center;
 `;
 
 const SCounterInput = styled.input`
@@ -56,18 +71,37 @@ const Counter = ({
   modifier,
   title,
   label,
+  tooltip,
   measurement = "",
 }: CounterProps) => {
-  const maybeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    if (!isNaN(Number(value))) {
-      update(Number(value));
-    }
-  };
+  const [isMounted, setMount] = useState(false);
+  const theme = useTheme();
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
 
   return (
     <SCounter>
-      <Label htmlFor={title}>{label}</Label>
+      <Label htmlFor={title}>
+        {label}
+        {isMounted && tooltip && (
+          <div>
+            <STooltipIndicator data-tip data-for={title}>
+              <pre>i</pre>
+            </STooltipIndicator>
+            <ReactTooltip
+              // @ts-ignore: Todo type styled-component theme
+              backgroundColor={theme.blue}
+              place="top"
+              effect="solid"
+              id={title}
+            >
+              {tooltip}
+            </ReactTooltip>
+          </div>
+        )}
+      </Label>
       <SCounterToggles>
         <SButtonContainer>
           <Button onClick={() => update(value - modifier)}>−</Button>

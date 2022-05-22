@@ -63,7 +63,7 @@ const Results = ({ ingredients }: ResultsProps) => {
           <SIngredientSymbol>🌾</SIngredientSymbol>
           <SIngredientName>Flour</SIngredientName>
           <SIngredientAmount>
-            <CountUp end={flour} decimals={0} suffix={measurement} />
+            <CountUp end={flour} decimals={0} suffix={` ${measurement}`} />
           </SIngredientAmount>
         </SIngredient>
         <SIngredient
@@ -77,7 +77,7 @@ const Results = ({ ingredients }: ResultsProps) => {
             <CountUp
               end={water}
               decimals={0}
-              suffix={measurement}
+              suffix={` ${measurement}`}
               duration={2}
             />
           </SIngredientAmount>
@@ -93,7 +93,7 @@ const Results = ({ ingredients }: ResultsProps) => {
             <CountUp
               end={salt}
               decimals={2}
-              suffix={measurement}
+              suffix={` ${measurement}`}
               duration={2}
             />
           </SIngredientAmount>
@@ -109,7 +109,7 @@ const Results = ({ ingredients }: ResultsProps) => {
             <CountUp
               end={yeast}
               decimals={2}
-              suffix={measurement}
+              suffix={` ${measurement}`}
               duration={2}
             />
           </SIngredientAmount>
