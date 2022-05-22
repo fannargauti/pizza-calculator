@@ -1,9 +1,12 @@
+import { AnimatePresence, motion } from "framer-motion";
 import styled from "styled-components";
 import { IngredientAmounts, Ingredients } from "../../types/common";
 
 interface ResultsProps {
   ingredients: Ingredients;
 }
+
+const SResults = styled(motion.div)``;
 
 const SIngredientsList = styled.ul`
   display: flex;
@@ -38,7 +41,7 @@ const Results = ({ ingredients }: ResultsProps) => {
   const { amounts, measurement, yeastType } = ingredients;
   const { flour, water, salt, yeast } = formatAmounts(amounts);
   return (
-    <>
+    <SResults>
       <h2>Results</h2>
       <SIngredientsList>
         <SIngredient>{`Flour: ${flour} ${measurement}`}</SIngredient>
@@ -46,7 +49,7 @@ const Results = ({ ingredients }: ResultsProps) => {
         <SIngredient>{`Salt: ${salt} ${measurement}`}</SIngredient>
         <SIngredient>{`${yeastType}: ${yeast} ${measurement}`}</SIngredient>
       </SIngredientsList>
-    </>
+    </SResults>
   );
 };
 

@@ -57,6 +57,10 @@ const Calculator = () => {
 
   const [viewIndex, setViewIndex] = useState(4);
 
+  const [navigationDirection, setNavigationDirection] = useState<
+    "forward" | "backward"
+  >("forward");
+
   const [numberOfDoughs, setNumberOfDoughs] = useState(
     initInputs.numberOfDoughs
   );
@@ -108,7 +112,12 @@ const Calculator = () => {
   return (
     <SCalculator>
       {viewIndex > 0 && (
-        <SBackButton onClick={() => setViewIndex(viewIndex - 1)}>
+        <SBackButton
+          onClick={() => {
+            setNavigationDirection("backward");
+            setViewIndex(viewIndex - 1);
+          }}
+        >
           <ChevronIcon />
         </SBackButton>
       )}
@@ -131,9 +140,17 @@ const Calculator = () => {
         viewOrder={viewOrder}
         ingredients={ingredients}
         isInitialRender={isInitialRender}
+        navigationDirection={navigationDirection}
       />
       <SButtonNextWrapper>
-        <Button onClick={() => setViewIndex(viewIndex + 1)}>next</Button>
+        <Button
+          onClick={() => {
+            setNavigationDirection("forward");
+            setViewIndex(viewIndex + 1);
+          }}
+        >
+          next
+        </Button>
       </SButtonNextWrapper>
     </SCalculator>
   );
