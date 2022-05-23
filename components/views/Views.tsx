@@ -32,13 +32,13 @@ interface ViewsProps {
   viewIndex: number;
   viewOrder: Readonly<string[]>;
   ingredients: Ingredients;
-  selectedYeast: YeastType;
+  yeastType: YeastType;
   setProofRoomTempDuration: Function;
   setNumberOfDoughs: Function;
   setDoughWeight: Function;
   setSaltPercentage: Function;
   setHydrationPercentage: Function;
-  setSelectedYeastType: Function;
+  setyeastTypeType: Function;
   setProofFridgeDuration: Function;
   firstRender: boolean;
   navigationDirection: "forward" | "backward";
@@ -53,10 +53,10 @@ const Views = ({
   setSaltPercentage,
   hydrationPercentage,
   setHydrationPercentage,
-  selectedYeast,
+  yeastType,
   proofRoomTempDuration,
   proofFridgeDuration,
-  setSelectedYeastType,
+  setyeastTypeType,
   setProofRoomTempDuration,
   setProofFridgeDuration,
   ingredients,
@@ -104,10 +104,7 @@ const Views = ({
 
     yeastTypes: (
       <SViewContainer key={"yeastTypes"} {...viewAnimations}>
-        <YeastTypes
-          selectedYeast={selectedYeast}
-          setSelectedYeastType={setSelectedYeastType}
-        />
+        <YeastTypes yeastType={yeastType} setyeastTypeType={setyeastTypeType} />
       </SViewContainer>
     ),
     proofDuration: (

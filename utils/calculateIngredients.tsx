@@ -1,4 +1,4 @@
-import { Ingredients, YeastType } from "../types/common";
+import { IngredientInputs, Ingredients, YeastType } from "../types/common";
 import {
   FRESH_YEAST_MULTIPLIER,
   FRIDGE_TEMP_CELCIUS,
@@ -9,16 +9,6 @@ import {
   SOURDOUGH_MULTIPLIER,
 } from "./constants";
 
-type IngredientInputs = {
-  numberOfDoughs: number;
-  doughWeight: number;
-  saltPercentage: number;
-  hydrationPercentage: number;
-  selectedYeast: YeastType;
-  proofRoomTempDuration: number;
-  proofFridgeDuration: number;
-};
-
 export function calculateIngredients(
   ingredientInputs: IngredientInputs
 ): Ingredients {
@@ -27,7 +17,7 @@ export function calculateIngredients(
     doughWeight,
     saltPercentage,
     hydrationPercentage,
-    selectedYeast,
+    yeastType,
     proofRoomTempDuration,
     proofFridgeDuration,
   } = ingredientInputs;
@@ -44,9 +34,9 @@ export function calculateIngredients(
       flour: flour,
       salt: salt,
       water: water,
-      yeast: convertToYeastType(yeast, selectedYeast),
+      yeast: convertToYeastType(yeast, yeastType),
     },
-    yeastType: selectedYeast,
+    yeastType: yeastType,
     measurement: "grams",
   };
 }

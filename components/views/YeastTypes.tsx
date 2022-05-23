@@ -3,8 +3,8 @@ import { YeastType } from "../../types/common";
 import Header from "./Header";
 
 interface TYeastTypes {
-  selectedYeast: YeastType;
-  setSelectedYeastType: Function;
+  yeastType: YeastType;
+  setyeastTypeType: Function;
 }
 
 interface IStyledYeastButton {
@@ -34,7 +34,7 @@ const SYeastButtonsContainer = styled.div`
   box-sizing: border-box;
 `;
 
-const YeastTypes = ({ selectedYeast, setSelectedYeastType }: TYeastTypes) => {
+const YeastTypes = ({ yeastType, setyeastTypeType }: TYeastTypes) => {
   const YEAST_TYPES: Array<YeastType> = [
     "Active dry yeast",
     "Fresh yeast",
@@ -49,8 +49,8 @@ const YeastTypes = ({ selectedYeast, setSelectedYeastType }: TYeastTypes) => {
             <SYeastButton
               key={yeast}
               title="Yeast type"
-              selected={selectedYeast === yeast}
-              onClick={() => setSelectedYeastType(yeast)}
+              selected={yeastType === yeast}
+              onClick={() => setyeastTypeType(yeast)}
             >
               {yeast}
             </SYeastButton>

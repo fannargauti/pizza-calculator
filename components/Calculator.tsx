@@ -1,13 +1,17 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import styled, { useTheme } from "styled-components";
-import { Ingredients, YeastType } from "../types/common";
+import { IngredientInputs, Ingredients, YeastType } from "../types/common";
 import { calculateIngredients } from "../utils/calculateIngredients";
 import { viewOrder } from "../utils/constants";
 import Button from "./views/Button";
 import Views from "./views/Views";
 import ChevronIcon from "./views/Icons/ChevronIcon";
 import { useFirstRender } from "../utils/hooks/useFirstRender";
+import {
+  loadIngredientsFromLocalStorage,
+  saveIngredientsToLocalStorage,
+} from "../utils/localStorage";
 
 const initIngredients: Ingredients = {
   amounts: { flour: 0, salt: 0, water: 0, yeast: 0 },
@@ -15,15 +19,17 @@ const initIngredients: Ingredients = {
   measurement: "grams",
 };
 
-const initInputs = {
-  numberOfDoughs: 5,
-  doughWeight: 250,
-  saltPercentage: Number((3).toFixed(1)),
-  hydrationPercentage: 60,
-  yeastType: "Active dry yeast" as YeastType,
-  proofRoomTempDuration: 4,
-  proofFridgeDuration: 18,
-};
+const initInputs = loadIngredientsFromLocalStorage({
+  fallback: {
+    numberOfDoughs: 5,
+    doughWeight: 250,
+    saltPercentage: Number((3).toFixed(1)),
+    hydrationPercentage: 60,
+    yeastType: "Active dry yeast" as YeastType,
+    proofRoomTempDuration: 4,
+    proofFridgeDuration: 18,
+  },
+});
 
 const SCalculator = styled.div`
   padding: 32px;
@@ -76,7 +82,7 @@ const Calculator = () => {
   const [hydrationPercentage, setHydrationPercentage] = useState(
     initInputs.hydrationPercentage
   );
-  const [selectedYeast, setSelectedYeastType] = useState(initInputs.yeastType);
+  const [yeastType, setyeastTypeType] = useState(initInputs.yeastType);
   const [proofRoomTempDuration, setProofRoomTempDuration] = useState(
     initInputs.proofRoomTempDuration
   );
@@ -84,6 +90,11 @@ const Calculator = () => {
     initInputs.proofFridgeDuration
   );
   const [ingredients, setIngredients] = useState(initIngredients);
+
+  const onEnterLastStep = (ingredients: IngredientInputs) => {
+    saveIngredientsToLocalStorage(ingredients);
+    setIngredients(calculateIngredients(ingredients));
+  };
 
   return (
     <SCalculator>
@@ -106,10 +117,10 @@ const Calculator = () => {
         setSaltPercentage={setSaltPercentage}
         hydrationPercentage={hydrationPercentage}
         setHydrationPercentage={setHydrationPercentage}
-        selectedYeast={selectedYeast}
+        yeastType={yeastType}
         proofRoomTempDuration={proofRoomTempDuration}
         proofFridgeDuration={proofFridgeDuration}
-        setSelectedYeastType={setSelectedYeastType}
+        setyeastTypeType={setyeastTypeType}
         setProofRoomTempDuration={setProofRoomTempDuration}
         setProofFridgeDuration={setProofFridgeDuration}
         viewIndex={viewIndex}
@@ -126,17 +137,15 @@ const Calculator = () => {
               setViewIndex(viewIndex + 1);
 
               if (viewIndex + 1 === viewOrder.length - 1) {
-                setIngredients(
-                  calculateIngredients({
-                    numberOfDoughs,
-                    doughWeight,
-                    saltPercentage,
-                    hydrationPercentage,
-                    selectedYeast,
-                    proofRoomTempDuration,
-                    proofFridgeDuration,
-                  })
-                );
+                onEnterLastStep({
+                  numberOfDoughs,
+                  doughWeight,
+                  saltPercentage,
+                  hydrationPercentage,
+                  yeastType,
+                  proofRoomTempDuration,
+                  proofFridgeDuration,
+                });
               }
             }}
           >
