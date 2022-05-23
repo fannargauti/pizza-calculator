@@ -19,6 +19,7 @@ const SYeastButton = styled.button<IStyledYeastButton>`
   border-style: intial;
   transition: all 0.1s ease-in-out;
   padding: 32px;
+  margin: 0;
   border: 2px solid ${(props) => props.theme.blue};
   border-bottom: none;
   font-family: inherit;

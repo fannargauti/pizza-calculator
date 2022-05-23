@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const SHeader = styled.h2`
-  font-size: 72px;
+  font-size: 68px;
   text-transform: uppercase;
   text-shadow: 4px -3px 0px #ffa2d0;
   color: ${(props) => props.theme.blue};
