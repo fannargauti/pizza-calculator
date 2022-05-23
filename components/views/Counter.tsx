@@ -42,6 +42,7 @@ const SCounterInput = styled.input`
   border: none;
   text-align: center;
   font-size: 32px;
+  font-family: inherit;
   width: 126px;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {

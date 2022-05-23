@@ -43,7 +43,7 @@ const SIngredientName = styled.h6`
   font-style: italic;
   font-size: 16px;
   font-weight: bold;
-  color: #00ff35;
+  color: white;
 `;
 
 const SIngredientAmount = styled.p`
@@ -64,7 +64,7 @@ const Results = ({
   const { flour, water, salt, yeast } = amounts;
   return (
     <SResults>
-      <Header>Ingredients results</Header>
+      <Header>Dough doses</Header>
       <SIngredientsList>
         <SIngredient
           initial={{ opacity: 0, scale: 0.7 }}
