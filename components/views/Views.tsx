@@ -10,7 +10,7 @@ import YeastTypes from "./YeastTypes";
 
 const SView = styled.div`
   height: 100%;
-  width: 100%;
+  max-width: 646px;
 `;
 
 const SViewContainer = styled(motion.div)`

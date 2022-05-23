@@ -46,15 +46,14 @@ const YeastTypes = ({ selectedYeast, setSelectedYeastType }: TYeastTypes) => {
       <SYeastButtonsContainer>
         {YEAST_TYPES.map((yeast) => {
           return (
-            <>
-              <SYeastButton
-                title="Yeast type"
-                selected={selectedYeast === yeast}
-                onClick={() => setSelectedYeastType(yeast)}
-              >
-                {yeast}
-              </SYeastButton>
-            </>
+            <SYeastButton
+              key={yeast}
+              title="Yeast type"
+              selected={selectedYeast === yeast}
+              onClick={() => setSelectedYeastType(yeast)}
+            >
+              {yeast}
+            </SYeastButton>
           );
         })}
       </SYeastButtonsContainer>
