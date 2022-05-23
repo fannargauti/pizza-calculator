@@ -21,6 +21,8 @@ const SContainer = styled.div`
 
 const SMain = styled.main`
   margin: auto;
+  height: 100%;
+  width: 100%;
 `;
 
 const Home: NextPage = () => {
