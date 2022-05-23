@@ -9,12 +9,12 @@ import Results from "./Results";
 import YeastTypes from "./YeastTypes";
 
 const SView = styled.div`
-  height: 100%;
   max-width: 646px;
+  flex: 1;
+  display: flex;
 `;
 
 const SViewContainer = styled(motion.div)`
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -33,7 +33,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Pizza calculator</title>
         <meta name="description" content="Generate your pizza recipe" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <AnimatePresence exitBeforeEnter>
         {started ? (

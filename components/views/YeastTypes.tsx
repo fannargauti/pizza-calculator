@@ -14,7 +14,7 @@ interface IStyledYeastButton {
 const SYeastButton = styled.button<IStyledYeastButton>`
   color: ${(props) => (props.selected ? "white" : props.theme.blue)};
   background-color: ${(props) => (props.selected ? props.theme.blue : "white")};
-  font-size: 32px;
+  font-size: 28px;
   border: none;
   border-style: intial;
   transition: all 0.1s ease-in-out;

@@ -17,18 +17,18 @@ const SSampleRecipe = styled(motion.article)`
   align-items: center;
   flex-direction: column;
   h3 {
-    margin: 18px;
-    font-size: 48px;
+    margin: 14px 0 00;
+    font-size: 32px;
     font-family: inherit;
   }
   ol {
     font-size: 18px;
-    line-height: 24px;
+    line-height: 32px;
     li {
       margin: 8px 0;
 
       span {
-        margin: 2px 0;
+        margin: 1px 0;
         color: white;
         padding: 4px;
         background-color: ${(props) => props.theme.blue};
