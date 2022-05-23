@@ -12,6 +12,7 @@ interface CounterProps {
   label: string;
   tooltip?: string;
   measurement?: string;
+  extraInfo?: string | null | undefined;
 }
 
 const SCounter = styled.div`
@@ -19,7 +20,7 @@ const SCounter = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   width: 100%;
   align-items: center;
 `;
@@ -66,6 +67,13 @@ const SCounterToggles = styled.div`
   align-items: center;
 `;
 
+const SExtraInfo = styled.p`
+  text-align: center;
+  color: #707070;
+
+  margin: 0;
+`;
+
 const Counter = ({
   value,
   update,
@@ -74,6 +82,7 @@ const Counter = ({
   label,
   tooltip,
   measurement = "",
+  extraInfo,
 }: CounterProps) => {
   const [isMounted, setMount] = useState(false);
   const theme = useTheme();
@@ -117,6 +126,7 @@ const Counter = ({
           <Button onClick={() => update(value + modifier)}>+</Button>
         </SButtonContainer>
       </SCounterToggles>
+      {extraInfo && <SExtraInfo>{extraInfo}</SExtraInfo>}
     </SCounter>
   );
 };
