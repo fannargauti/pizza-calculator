@@ -24,7 +24,7 @@ const SDoughFigure = styled(motion.span)<IStyledDoughFigure>`
     rgba(255, 243, 195, 1) 56%,
     rgba(255, 242, 178, 1) 100%
   );
-  outline: 2px solid #ffe993;
+  border: 1px solid #ffe993;
 `;
 
 function getDoughSize(doughWeight: number): number {

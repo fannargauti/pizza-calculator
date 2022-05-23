@@ -63,6 +63,7 @@ const SButtonContainer = styled.div`
 
 const SCounterToggles = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const Counter = ({

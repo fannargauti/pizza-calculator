@@ -9,7 +9,8 @@ const SLabel = styled.label`
   display: flex;
   align-items: center;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
+  margin: 3px 0;
 `;
 
 const Label = ({ children, htmlFor }: ILabel) => {

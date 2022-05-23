@@ -41,6 +41,9 @@ const SCalculator = styled.div`
 
 const SBackButton = styled.button`
   align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background-color: transparent;
   height: 30px;

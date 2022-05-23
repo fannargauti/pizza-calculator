@@ -13,6 +13,7 @@ interface IStyledButton {
 const SButton = styled.button<IStyledButton>`
   padding: 16px 48px;
   font-size: 24px;
+  font-family: inherit;
   border-radius: 8px;
   background-color: ${(props) => props.theme.blue};
   color: white;

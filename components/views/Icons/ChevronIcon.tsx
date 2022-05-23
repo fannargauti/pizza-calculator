@@ -9,6 +9,8 @@ const ChevronIcon = () => {
       fillRule="evenodd"
       clipRule="evenodd"
       viewBox="0 0 298 511.93"
+      height="60"
+      width="60"
     >
       <path
         fillRule="nonzero"

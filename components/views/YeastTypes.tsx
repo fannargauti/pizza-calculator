@@ -16,15 +16,22 @@ const SYeastButton = styled.button<IStyledYeastButton>`
   background-color: ${(props) => (props.selected ? props.theme.blue : "white")};
   font-size: 32px;
   border: none;
-  outline: 2px solid ${(props) => props.theme.blue};
+  border-style: intial;
   transition: all 0.1s ease-in-out;
   padding: 32px;
+  border: 2px solid ${(props) => props.theme.blue};
+  border-bottom: none;
+  font-family: inherit;
+
+  &:last-child {
+    border-bottom: 2px solid ${(props) => props.theme.blue};
+  }
 `;
 
 const SYeastButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  box-sizing: border-box;
 `;
 
 const YeastTypes = ({ selectedYeast, setSelectedYeastType }: TYeastTypes) => {

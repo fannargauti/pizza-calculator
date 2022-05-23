@@ -13,6 +13,11 @@ const SDoughContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  flex: 1;
+  align-self: center;
+  align-content: center;
+  justify-self: center;
+  justify-content: center;
 `;
 
 export type AnimationVariant = "noDoughs" | "doughWeight";

@@ -10,6 +10,7 @@ import YeastTypes from "./YeastTypes";
 
 const SView = styled.div`
   height: 100%;
+  width: 100%;
 `;
 
 const SViewContainer = styled(motion.div)`
@@ -121,16 +122,7 @@ const Views = ({
       </SViewContainer>
     ),
     result: (
-      <motion.div
-        key={"result"}
-        initial={{
-          opacity: 0,
-        }}
-        animate={{ opacity: 1 }}
-        exit={{
-          opacity: 0,
-        }}
-      >
+      <SViewContainer key={"results"} {...viewAnimations}>
         <Results
           ingredients={ingredients}
           proofRoomTempDuration={proofRoomTempDuration}
@@ -138,7 +130,7 @@ const Views = ({
           numberOfDoughs={numberOfDoughs}
           doughWeight={doughWeight}
         />
-      </motion.div>
+      </SViewContainer>
     ),
   };
 

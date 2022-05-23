@@ -37,8 +37,8 @@ const SIngredientSymbol = styled.span`
   font-size: 64px;
 `;
 
-const SIngredientName = styled.p`
-  margin-top: 0;
+const SIngredientName = styled.h6`
+  margin: 0;
   text-transform: uppercase;
   font-style: italic;
   font-size: 16px;
@@ -48,9 +48,9 @@ const SIngredientName = styled.p`
 
 const SIngredientAmount = styled.p`
   font-weight: bold;
-  font-size: 24px;
+  font-size: 28px;
   color: white;
-  margin-top: 8px;
+  margin: 16px;
 `;
 
 const Results = ({
