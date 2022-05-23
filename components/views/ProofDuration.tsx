@@ -8,7 +8,16 @@ interface DoughWeightProps {
   setProofFridgeDuration: Function;
 }
 
-const maybeUpdateProofTime = (
+const maybeUpdateRoomTempProofTime = (
+  proofDuration: number,
+  setProofTime: Function
+) => {
+  if (proofDuration > 0) {
+    setProofTime(proofDuration);
+  }
+};
+
+const maybeUpdateFridgeProofTime = (
   proofDuration: number,
   setProofTime: Function
 ) => {
@@ -23,11 +32,6 @@ const ProofDuration = ({
   setProofRoomTempDuration,
   setProofFridgeDuration,
 }: DoughWeightProps) => {
-  const error =
-    proofRoomTempDuration < 2 &&
-    proofFridgeDuration < 6 &&
-    "Your dough does not have enough time to proof";
-
   return (
     <>
       <Header>Proofing duration</Header>
@@ -38,7 +42,10 @@ const ProofDuration = ({
         modifier={1}
         measurement="h"
         update={(nextProofDuration: number) =>
-          maybeUpdateProofTime(nextProofDuration, setProofRoomTempDuration)
+          maybeUpdateRoomTempProofTime(
+            nextProofDuration,
+            setProofRoomTempDuration
+          )
         }
       />
       <Counter
@@ -48,10 +55,9 @@ const ProofDuration = ({
         modifier={1}
         measurement="h"
         update={(nextProofDuration: number) =>
-          maybeUpdateProofTime(nextProofDuration, setProofFridgeDuration)
+          maybeUpdateFridgeProofTime(nextProofDuration, setProofFridgeDuration)
         }
       />
-      {error && <p>{error}</p>}
     </>
   );
 };

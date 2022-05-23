@@ -8,12 +8,41 @@ interface IPercantages {
   setSaltPercentage: Function;
 }
 
+const getSaltyInfo = (saltPecentage: number) => {
+  if (saltPecentage > 5) {
+    return "Warning: very salty pizzas incoming";
+  }
+  if (saltPecentage < 1) {
+    return "Salt gives dough its flavour";
+  }
+  return null;
+};
+
+const getHydrationInfo = (hydrationPercentage: number) => {
+  if (hydrationPercentage > 80) {
+    return "Warning: this dough is going to be hard to work with";
+  }
+  if (hydrationPercentage < 50) {
+    return "Your pizzas will be very dry when hydration is this low";
+  }
+  return null;
+};
+
 const maybeUpdateSaltPercentage = (
   nextSaltPercentage: number,
   setSaltPercentage: Function
 ) => {
-  if (nextSaltPercentage >= 1) {
+  if (nextSaltPercentage > 0) {
     setSaltPercentage(Number(nextSaltPercentage.toFixed(1)));
+  }
+};
+
+const maybeUpdateHydrationPercentage = (
+  nextHydrationPercentage: number,
+  setHydrationPercentage: Function
+) => {
+  if (nextHydrationPercentage >= 30) {
+    setHydrationPercentage(Number(nextHydrationPercentage.toFixed(1)));
   }
 };
 
@@ -23,6 +52,9 @@ const Percentages = ({
   hydrationPercentage,
   setHydrationPercentage,
 }: IPercantages) => {
+  const saltyInfo = getSaltyInfo(saltPercentage);
+  const hydrationInfo = getHydrationInfo(hydrationPercentage);
+
   return (
     <>
       <Header>Percentages</Header>
@@ -33,6 +65,7 @@ const Percentages = ({
         value={saltPercentage}
         modifier={0.1}
         measurement="%"
+        extraInfo={saltyInfo}
         update={(nextSaltPercentage: number) =>
           maybeUpdateSaltPercentage(nextSaltPercentage, setSaltPercentage)
         }
@@ -44,8 +77,9 @@ const Percentages = ({
         value={hydrationPercentage}
         modifier={1}
         measurement="%"
+        extraInfo={hydrationInfo}
         update={(nextHydrationPercentage: number) =>
-          setHydrationPercentage(
+          maybeUpdateHydrationPercentage(
             nextHydrationPercentage,
             setHydrationPercentage
           )
