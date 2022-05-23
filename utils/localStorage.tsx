@@ -12,11 +12,14 @@ export function loadIngredientsFromLocalStorage({
   fallback: IngredientInputs;
 }): IngredientInputs {
   if (typeof window !== "undefined") {
-    const ingredients = JSON.parse(localStorage.getItem("ingredients") || "");
-    if (!isValidIngredients(ingredients, fallback)) {
-      return fallback;
+    const storedIngredients = localStorage.getItem("ingredients");
+    if (storedIngredients) {
+      const parsedIngredients = JSON.parse(storedIngredients);
+      if (isValidIngredients(parsedIngredients, fallback)) {
+        return parsedIngredients;
+      }
     }
-    return ingredients;
+    return fallback;
   }
   return fallback;
 }
