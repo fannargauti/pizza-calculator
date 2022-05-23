@@ -40,7 +40,7 @@ interface ViewsProps {
   setHydrationPercentage: Function;
   setSelectedYeastType: Function;
   setProofFridgeDuration: Function;
-  isInitialRender: boolean;
+  firstRender: boolean;
   navigationDirection: "forward" | "backward";
 }
 
@@ -62,11 +62,10 @@ const Views = ({
   ingredients,
   viewIndex,
   viewOrder,
-  isInitialRender,
+  firstRender,
   navigationDirection,
 }: ViewsProps) => {
-  useEffect;
-  const viewAnimations = !isInitialRender && {
+  const viewAnimations = !firstRender && {
     initial: {
       x: navigationDirection === "forward" ? "100%" : "-100%",
       opacity: 0,
@@ -88,7 +87,7 @@ const Views = ({
           setNumberOfDoughs={setNumberOfDoughs}
           setDoughWeight={setDoughWeight}
           viewType={viewOrder[viewIndex] as ViewType}
-          isInitialRender={isInitialRender}
+          firstRender={firstRender}
         />
       </SViewContainer>
     ),

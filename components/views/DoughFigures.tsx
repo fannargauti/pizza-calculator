@@ -1,3 +1,4 @@
+import { LayoutGroup } from "framer-motion";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import DoughFigure from "./DoughFigure";
@@ -5,7 +6,7 @@ import DoughFigure from "./DoughFigure";
 interface IDoughFigures {
   numberOfDoughs: number;
   doughWeight?: number;
-  isInitialRender: boolean;
+  firstRender: boolean;
 }
 
 const SDoughContainer = styled.div`
@@ -18,6 +19,7 @@ const SDoughContainer = styled.div`
   align-content: center;
   justify-self: center;
   justify-content: center;
+  max-width: 400px;
 `;
 
 export type AnimationVariant = "noDoughs" | "doughWeight";
@@ -25,7 +27,7 @@ export type AnimationVariant = "noDoughs" | "doughWeight";
 const DoughFigures = ({
   numberOfDoughs,
   doughWeight = 250,
-  isInitialRender,
+  firstRender,
 }: IDoughFigures) => {
   const [animationVariant, setAnimationVariant] =
     useState<AnimationVariant>("noDoughs");
@@ -43,16 +45,16 @@ const DoughFigures = ({
       {Array.from(Array(numberOfDoughs < 15 ? numberOfDoughs : 15).keys()).map(
         (num) => {
           const shouldAnimate =
-            ((num > 4 && num === numberOfDoughs - 1) ||
+            (num === numberOfDoughs - 1 ||
               animationVariant === "doughWeight") &&
-            !isInitialRender;
+            !firstRender;
           return (
             <DoughFigure
               doughWeight={doughWeight}
               key={`${num}-${doughWeight}-${numberOfDoughs}`}
               shouldAnimate={shouldAnimate}
               animationVariant={animationVariant}
-              isInitialRender={isInitialRender}
+              firstRender={firstRender}
             />
           );
         }

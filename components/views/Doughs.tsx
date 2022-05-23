@@ -9,7 +9,7 @@ interface DoughsProps {
   setNumberOfDoughs: Function;
   setDoughWeight: Function;
   viewType: ViewType;
-  isInitialRender: boolean;
+  firstRender: boolean;
 }
 
 const SContent = styled.div`
@@ -66,16 +66,15 @@ const Doughs = ({
   setNumberOfDoughs,
   doughWeight,
   setDoughWeight,
-  isInitialRender,
+  firstRender,
 }: DoughsProps) => {
-  const error = numberOfDoughs === 0 && "Making zero pizzas is no fun";
   const pizzaSize = gramsToPizzaSize(doughWeight);
   return (
     <>
       <DoughFigures
         numberOfDoughs={numberOfDoughs}
         doughWeight={doughWeight}
-        isInitialRender={isInitialRender}
+        firstRender={firstRender}
       />
       <SContent>
         <Counter
@@ -83,6 +82,9 @@ const Doughs = ({
           title="Number of doughs"
           value={numberOfDoughs}
           modifier={1}
+          extraInfo={
+            numberOfDoughs === 0 ? `Why would you not make pizza?` : null
+          }
           update={(nextNumberOfDoughs: number) =>
             maybeUpdateNumberOfDoughs(nextNumberOfDoughs, setNumberOfDoughs)
           }
@@ -99,7 +101,6 @@ const Doughs = ({
           }
         />
       </SContent>
-      {error && <p>{error}</p>}
     </>
   );
 };

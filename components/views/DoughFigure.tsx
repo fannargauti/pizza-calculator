@@ -6,17 +6,17 @@ interface IDoughFigure {
   doughWeight: number;
   shouldAnimate: boolean;
   animationVariant: AnimationVariant;
-  isInitialRender?: boolean;
+  firstRender?: boolean;
 }
 
 interface IStyledDoughFigure {
-  doughWeight: number;
+  $doughWeight: number;
 }
 
 const SDoughFigure = styled(motion.span)<IStyledDoughFigure>`
   margin: -3px 0px;
-  height: ${(props) => `${getDoughSize(props.doughWeight)}px`};
-  width: ${(props) => `${getDoughSize(props.doughWeight)}px`};
+  height: ${(props) => `${getDoughSize(props.$doughWeight)}px`};
+  width: ${(props) => `${getDoughSize(props.$doughWeight)}px`};
   border-radius: 40%;
   background: radial-gradient(
     circle at 50% 50%,
@@ -42,7 +42,7 @@ const DoughFigure = ({
   doughWeight,
   shouldAnimate,
   animationVariant,
-  isInitialRender,
+  firstRender,
 }: IDoughFigure) => {
   const controls = useAnimation();
   const variants = {
@@ -55,20 +55,20 @@ const DoughFigure = ({
       transition: { duration: 0.5 },
     },
     intro: {
-      scale: [50, 0.95, 1.05, 0.99, 1.02, 1, 0.99, 1.01],
+      scale: [50, 0.95, 1.05, 0.97, 1.02, 1, 0.99, 1.01, 1, 1, 1, 1],
       transition: {
-        duration: 3,
+        duration: 2.5,
         delay: Math.random() * (0.4 - 0.2) + 0.2,
-        times: [0, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.98],
+        times: [0, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 9.5, 1],
       },
     },
   };
-  if (isInitialRender) {
+  if (firstRender) {
     controls.start(variants.intro);
   } else if (shouldAnimate) {
     controls.start(variants[animationVariant]);
   }
-  return <SDoughFigure animate={controls} doughWeight={doughWeight} />;
+  return <SDoughFigure animate={controls} $doughWeight={doughWeight} />;
 };
 
 export default DoughFigure;

@@ -7,6 +7,7 @@ import { viewOrder } from "../utils/constants";
 import Button from "./views/Button";
 import Views from "./views/Views";
 import ChevronIcon from "./views/Icons/ChevronIcon";
+import { useFirstRender } from "../utils/hooks/useFirstRender";
 
 const initIngredients: Ingredients = {
   amounts: { flour: 0, salt: 0, water: 0, yeast: 0 },
@@ -26,8 +27,8 @@ const initInputs = {
 
 const SCalculator = styled.div`
   padding: 32px;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +58,7 @@ const SButtonNextWrapper = styled.div`
 `;
 
 const Calculator = () => {
-  const [isInitialRender, setIsInitialRenderer] = useState(true);
+  const firstRender = useFirstRender();
 
   const [viewIndex, setViewIndex] = useState(0);
 
@@ -83,35 +84,6 @@ const Calculator = () => {
     initInputs.proofFridgeDuration
   );
   const [ingredients, setIngredients] = useState(initIngredients);
-
-  useEffect(() => {
-    setIsInitialRenderer(false);
-  }, []);
-
-  useEffect(() => {
-    if (viewIndex === viewOrder.length - 1) {
-      setIngredients(
-        calculateIngredients({
-          numberOfDoughs,
-          doughWeight,
-          saltPercentage,
-          hydrationPercentage,
-          selectedYeast,
-          proofRoomTempDuration,
-          proofFridgeDuration,
-        })
-      );
-    }
-  }, [
-    viewIndex,
-    numberOfDoughs,
-    doughWeight,
-    saltPercentage,
-    hydrationPercentage,
-    selectedYeast,
-    proofRoomTempDuration,
-    proofFridgeDuration,
-  ]);
 
   return (
     <SCalculator>
@@ -143,7 +115,7 @@ const Calculator = () => {
         viewIndex={viewIndex}
         viewOrder={viewOrder}
         ingredients={ingredients}
-        isInitialRender={isInitialRender}
+        firstRender={firstRender}
         navigationDirection={navigationDirection}
       />
       {viewIndex < viewOrder.length - 1 && (
@@ -152,6 +124,20 @@ const Calculator = () => {
             onClick={() => {
               setNavigationDirection("forward");
               setViewIndex(viewIndex + 1);
+
+              if (viewIndex + 1 === viewOrder.length - 1) {
+                setIngredients(
+                  calculateIngredients({
+                    numberOfDoughs,
+                    doughWeight,
+                    saltPercentage,
+                    hydrationPercentage,
+                    selectedYeast,
+                    proofRoomTempDuration,
+                    proofFridgeDuration,
+                  })
+                );
+              }
             }}
           >
             next
