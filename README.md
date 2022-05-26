@@ -2,7 +2,7 @@
 
 <img alt="pizza calculator logo" src="./public/logo-cover.png">
 
-_Generate a perfect pizza recipe everytime, based on your preferences and context._
+_Generate a perfect pizza recipe every time, based on your preferences and context._
 
 ## Pizza calculator calculates a recipe for you based your inputs. You can control:
 
