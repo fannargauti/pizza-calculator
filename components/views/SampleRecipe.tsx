@@ -69,24 +69,24 @@ const SampleRecipe = ({
         {yeastType === "Fresh yeast" ? (
           <li>
             Whisk together <span>{water}</span> <>{measurement}</> of lukewarm
-            water and <span>{yeast}</span> <>{measurement}</>{" "}
+            water and <span>{yeast}</span> <>{measurement}</> of{" "}
             <span>{yeastType.toLowerCase()}</span>.
           </li>
         ) : (
           <li>
             Whisk together <span>{water}</span> <>{measurement}</> water and{" "}
-            <span>{yeast}</span> <>{measurement}</>{" "}
+            <span>{yeast}</span> <>{measurement}</> of{" "}
             <span>{yeastType.toLowerCase()}</span>.
           </li>
         )}
 
         <li>
-          In a large bowl Mix together <span>{flour}</span> <>{measurement}</>{" "}
+          In a large bowl, mix together <span>{flour}</span> <>{measurement}</>{" "}
           flour and <span>{salt}</span> <>{measurement}</> salt.
         </li>
         <li>
-          Pour the yeast mixture into the large bowl and combine into a shaggy
-          dough.
+          Pour the yeast mixture into the large bowl and mix to combine into a
+          shaggy dough.
         </li>
         <li>
           Let dough rest for approx 15 minutes, this will help the gluten start
@@ -96,8 +96,8 @@ const SampleRecipe = ({
           Turn out to a lightly floured surface and kneed for 8-10 minutes.
         </li>
         <li>
-          Clean your big bowl, and drizzle lightly with olive oil. Place the
-          dough back into the bowl and cover with plastic wrap.
+          Clean your big bowl, and drizzle with olive oil. Place the dough back
+          into the bowl and cover with plastic wrap.
         </li>
         <li>
           Leave the bowl for <span> {proofRoomTempDuration}</span> hours or
@@ -132,8 +132,8 @@ const SampleRecipe = ({
         )}
 
         <li>
-          Bake pizza, ideally in a pizza oven, or alternatively on the highest
-          setting on your home oven.
+          Bake pizza, ideally in a pizza oven, or on the highest setting on your
+          home oven.
         </li>
         <li>Enjoy!</li>
       </ol>
