@@ -47,7 +47,7 @@ const OverlayIntro = ({ setStarted }: IOverlayIntro) => {
       >
         <SLogo src="/logo.svg" alt="pizza calculator logo" />
         <SOverlayDescription>
-          Generate a perfect pizza recipe everytime, based on your preferences
+          Generate a perfect pizza recipe every time, based on your preferences
           and context.
         </SOverlayDescription>
         <Button onClick={setStarted}>start</Button>
