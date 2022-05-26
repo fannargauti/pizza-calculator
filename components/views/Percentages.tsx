@@ -57,7 +57,7 @@ const Percentages = ({
 
   return (
     <>
-      <Header>Percentages</Header>
+      <Header>Salt & hydration</Header>
       <Counter
         label="Salt percentage"
         title="Salt percentage"

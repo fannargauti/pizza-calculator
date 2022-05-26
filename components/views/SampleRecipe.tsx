@@ -38,11 +38,13 @@ const SSampleRecipe = styled(motion.article)`
 `;
 
 const formatAmounts = (amounts: IngredientAmounts) => {
+  const decimalsLimit = 100;
+  const { flour, water, salt, yeast } = amounts;
   return {
-    flour: amounts.flour.toFixed(0),
-    water: amounts.water.toFixed(0),
-    salt: amounts.salt.toFixed(1),
-    yeast: amounts.yeast.toFixed(1),
+    flour: flour.toFixed(0),
+    water: water.toFixed(0),
+    salt: salt.toFixed(salt > decimalsLimit ? 0 : 1),
+    yeast: yeast.toFixed(yeast > decimalsLimit ? 0 : 1),
   };
 };
 
@@ -84,31 +86,30 @@ const SampleRecipe = ({
         </li>
         <li>
           Pour the yeast mixture into the large bowl and combine into a shaggy
-          dough
+          dough.
         </li>
         <li>
           Let dough rest for approx 15 minutes, this will help the gluten start
-          to form and make the dough easier to work with
+          to form and make the dough easier to work with.
         </li>
         <li>
-          Turn out to a lightly floured surface and kneed for 8-10 minutes
+          Turn out to a lightly floured surface and kneed for 8-10 minutes.
         </li>
         <li>
           Clean your big bowl, and drizzle lightly with olive oil. Place the
-          dough back into the bowl and cover with plastic wrap
+          dough back into the bowl and cover with plastic wrap.
         </li>
         <li>
           Leave the bowl for <span> {proofRoomTempDuration}</span> hours or
-          until the dough has doubled in size
+          until the dough has doubled in size.
         </li>
         {proofFridgeDuration > 0 ? (
           <>
             <li>
               Divide the bulk-proofed dough into <span>{numberOfDoughs}</span>x
-              <span>{doughWeight}</span>
-              pieces. Shape carefully into balls and place in an airtight box
-              before putting in the fridge for{" "}
-              <span>{proofFridgeDuration}</span> hours
+              <span>{doughWeight}</span> {measurement} pieces. Shape carefully
+              into balls and place in an airtight box before putting in the
+              fridge for <span>{proofFridgeDuration}</span> hours.
             </li>
             <li>
               Remove dough from the fridge while you prepare your favorite
@@ -119,9 +120,9 @@ const SampleRecipe = ({
           <>
             <li>
               Divide the bulk-proofed dough into <span>{numberOfDoughs}</span>x
-              <span>{doughWeight}</span>
-              pieces. Shape carefully into balls and cover to rest for 15-20
-              minutes(or in the fridge for up to 12 hours)
+              <span>{doughWeight}</span> {measurement} pieces. Shape carefully
+              into balls and cover to rest for 15-20 minutes(or in the fridge
+              for up to 12 hours).
             </li>
             <li>
               While the dough balls are resting, prepare your favorite toppings
@@ -132,7 +133,7 @@ const SampleRecipe = ({
 
         <li>
           Bake pizza, ideally in a pizza oven, or alternatively on the highest
-          setting on your home oven until
+          setting on your home oven.
         </li>
         <li>Enjoy!</li>
       </ol>

@@ -103,7 +103,7 @@ const Results = ({
           <SIngredientAmount>
             <CountUp
               end={salt}
-              decimals={1}
+              decimals={salt > 100 ? 0 : 1}
               suffix={` ${measurement}`}
               duration={2}
             />
@@ -119,7 +119,7 @@ const Results = ({
           <SIngredientAmount>
             <CountUp
               end={yeast}
-              decimals={1}
+              decimals={yeast > 100 ? 0 : 1}
               suffix={` ${measurement}`}
               duration={2}
             />
